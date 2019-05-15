@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bank M</title>
+    <link rel="stylesheet" href="css/style.css">
+    <?php echo $sLinktoExtraCss ?? ''; ?>
+</head>
+<body>
+    <nav class="shadow">
+        <div class="left-nav">
+            <a href="<?php echo $sProfileLink ?? 'profile'; ?>"><img class="logo" src="images/doggo-loggo.svg"></a>
+            <a href="search"><img src="images/search.svg" class="small-icon">Search for dog sitters</a>
+            <a href="become"><img src="images/dog.svg" class="small-icon">Become a dog sitter</a>
+        </div>
+        <div class="right-nav">
+            <a href="<?php echo $sProfileLink ?? 'profile'; ?>">Profile</a>
+            <a href="<?php echo $sSettingsLink ?? 'settings'; ?>">Settings</a>
+            <a href="logout">Logout</a>
+        </div>
+    </nav>
