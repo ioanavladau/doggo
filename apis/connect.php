@@ -3,7 +3,7 @@
 try{
 
     $sUserName = 'root';
-    $sPassword = 'ilovepizza';
+    $sPassword = '';
     $sConnection = "mysql:host=localhost; dbname=doggo; charset=utf8mb4";
 
     $aOptions = array(

@@ -5,7 +5,6 @@
     }
 
     $sUserId = $_SESSION['sEmail'];
-
     
 
     // Check if the client is active
