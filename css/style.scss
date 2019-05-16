@@ -125,3 +125,18 @@ input{
     margin-top: 15px;
     margin-bottom: 30px;
 }
+.available-times{
+    display: flex;
+
+}
+.available-time{
+    height: 50px;
+    width: 50px;
+    background-color: lightgray;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.time-active{
+    border: 2px solid green;
+    box-sizing: border-box;
+}
