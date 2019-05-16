@@ -1,16 +1,16 @@
 <?php
     session_start();
-    if( !isset($_SESSION['sUserId']) ){
+    if( !isset($_SESSION['sEmail']) ){
         header('Location: login.php');
     }
 
-    $sUserId = $_SESSION['sUserId'];
+    $sUserId = $_SESSION['sEmail'];
 
     
 
     // Check if the client is active
     // if($jClient->active == false){
-    //     unset($_SESSION['sUserId']);
+    //     unset($_SESSION['sEmail']);
     //     session_destroy();
 
     //     header("Location: login");
@@ -26,7 +26,15 @@
 ?>
 <div class="container contents-centered">
         <div class="card ">
-            <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+            <input type="text" name="daterange" id="availability" value="01/01/2018 - 01/15/2018" />
+            <div class="available-times">
+                <div class="available-time" id="morning">6:00-11:00</div>
+                <div class="available-time" id="noon">11:00-15:00</div>
+                <div class="available-time" id="evening">15:00-20:00</div>
+            </div>
+
+                <button class="yellow-btn" id="add-availability">Add availability</button>
+
         </div>
 </div>
 

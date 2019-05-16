@@ -38,7 +38,7 @@ foreach( $aRows as $aRow ){
         exit;
     }
     session_start();
-    $_SESSION['sUserId'] = $sEmail;
+    $_SESSION['sEmail'] = $sEmail;
     sendResponse(1, __LINE__, $sEmail);
 }
 
