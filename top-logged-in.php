@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bank M</title>
+    <title>Doggo</title>
     <link rel="stylesheet" href="css/style.css">
     <?php echo $sLinktoExtraCss ?? ''; ?>
 </head>
-<body>
+<body <?= $sGreyBodyClass ?? "" ?> >
     <nav class="shadow">
         <div class="left-nav">
             <a href="<?php echo $sProfileLink ?? 'profile'; ?>"><img class="logo" src="images/doggo-loggo.svg"></a>

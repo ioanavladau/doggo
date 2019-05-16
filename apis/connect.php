@@ -7,7 +7,7 @@ try{
     $sConnection = "mysql:host=localhost; dbname=doggo; charset=utf8mb4";
 
     $aOptions = array(
-//        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
         // PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     );
