@@ -38,7 +38,10 @@
                     $aRows = $stmt->fetchAll();
                     
                     if ($aRows == []){
-                        echo 'Not a dogsitter';
+                        // sendResponse(-1, __LINE__, "User is not a dogsitter");
+                        // exit;
+
+                        echo 'not a dogsitter';
                     }
                     
                     foreach( $aRows as $aRow ){
@@ -47,6 +50,12 @@
                         echo "$sUserEmail with sUserId $sUserId is a dog sitter";
                     }
                     
+                    /********************************/
+                    
+                    function sendResponse($iStatus, $iLine, $sMessage){
+                        echo '{"status": '.$iStatus.', "code": "'.$iLine.'", "message":"'.$sMessage.'"}';
+                        exit;
+                    }
                 ?>
             </p>
 

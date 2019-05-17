@@ -89,7 +89,7 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    input{
+    input, textarea{
         display: block;
         width: 35vw;
         margin: 5px 0 35px 0;
@@ -98,11 +98,16 @@ footer{
         margin-bottom: 10px;
     }
 }
-input{
+input, textarea{
     height: 40px;
     padding: 0 10px;
     border-style: none;
     border: 1px solid $bordercolor;
+}
+textarea{
+    min-width: 35vw;
+    max-width: 35vw;
+    min-height: 40px;
 }
 .contents-centered{
     display: flex;

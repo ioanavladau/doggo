@@ -1,6 +1,13 @@
 <?php 
     $sGreyBodyClass = "class='grey-bg'";
+    
+    session_start();
+    $sUserEmail = $_SESSION['sEmail'];
+    $sHeaderLink = "<script> window.sUserEmail = '$sUserEmail'; </script>";
+    
     require_once 'top-logged-in.php';
+    // $sUserEmail = $_SESSION['sEmail'];
+
 ?>
     
 <?php
@@ -20,15 +27,19 @@
     // }
 ?>
 
-
-    <form action="apis/api-set-dog-sitter" method="get" enctype="multipart/form-data">
+<div class="container">
+<div class="card">
+    <form id="frmBecomeDogsitter" enctype="multipart/form-data">
         <label for="txtiFare">Hourly Fare</label>
         <input type="number" name="txtiFareDogSitter" id="txtiFareDogSitter"><br>
         <label for="txtAbout">About Me</label>
-        <input type="text" name="txtsAboutDogSitter" id="txtsAboutDogSitter"><br>
+        <textarea name="txtsAboutDogSitter" id="txtsAboutDogSitter"></textarea><br>
         <input type="file" name="dogSitterPicturesToUpload" id="dogSitterPicturesToUpload">
         <input type="submit" value="Become a dogsitter!" name="submit">
+        
     </form>
+    </div>
+</div>
 
 
 

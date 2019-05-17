@@ -13,7 +13,7 @@
         <div class="left-nav">
             <a href="login"><img class="logo" src="images/doggo-loggo.svg"></a>
             <a href="search"><img src="images/search.svg" class="small-icon">Search for dog sitters</a>
-            <a href="become"><img src="images/dog.svg" class="small-icon">Become a dog sitter</a>
+            <a href="become-a-dogsitter"><img src="images/dog.svg" class="small-icon">Become a dog sitter</a>
         </div>
         <div class="right-nav">
             <a href="login">Log in</a>
