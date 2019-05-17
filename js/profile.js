@@ -2,6 +2,14 @@ let sStartDate
 let sEndDate
 let sSelectedTime
 
+// $(document).ready(function() {
+//     if(window.sUserEmail) {
+//         $("#is-dog-sitter").text('You are a dogsitter')}
+//     else {
+//         $("#is-dog-sitter").hide();
+//     }
+// });
+
 $(function() {
   $('input[name="daterange"]').daterangepicker({
     opens: 'left',
@@ -22,7 +30,6 @@ $('.available-time').click(function(){
     $('.available-time').removeClass('time-active')
     $(this).addClass('time-active')
 });
-
 
 
 $('#add-availability').click(function(){

@@ -7,10 +7,6 @@
     <title>Doggo</title>
     <link rel="stylesheet" href="css/style.css">
     <?php echo $sLinktoExtraCss ?? ''; ?>
-    <?php session_start();?>
-    <script>
-        window.myCustomData = "<?php echo $_SESSION['sEmail'] ?>"
-    </script>
 </head>
 <body <?= $sGreyBodyClass ?? "" ?> >
     <nav class="shadow">

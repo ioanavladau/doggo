@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Doggo</title>
     <link rel="stylesheet" href="css/style.css">
-    <?php echo $sLinktoExtraCss ?? ''; ?>
+    <?php echo $sLinktoExtraCss ?? '';?>
+    <?php echo $sHeaderLink ?? '';?>
 </head>
 <body <?= $sGreyBodyClass ?? "" ?> >
     <nav class="shadow">

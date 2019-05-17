@@ -1,17 +1,16 @@
 <?php
 
-require_once __DIR__.'/../connect.php';
+require_once __DIR__.'/connect.php';
 
 session_start();
 $sEmail = $_SESSION['sEmail'];
 
-if(isset($_GET["txtiDogSitterFare"]) && isset($_GET['txtiDogSitterAbout'])){
-    $iFareDogSitter = $_GET['txtiDogSitterFare'];
-    $sAboutDogSitter = $_GET['txtiDogSitterAbout'];
-} else {
-    sendResponse(0, __LINE__, "Fare or about not defined");
+if( !isset($_GET["txtiFareDogSitter"]) && !isset($_GET["txtsAboutDogSitter"])){
+        sendResponse(0, __LINE__, "Fare and about not defined");
+    } else {
+        $iFareDogSitter = $_GET['txtiFareDogSitter'];
+        $sAboutDogSitter = $_GET['txtsAboutDogSitter'];
 }
-
 
 try{
 
@@ -31,26 +30,25 @@ try{
         $stmt->bindValue(':iFareDogSitter', $iFareDogSitter);
         $stmt->bindValue(':sAboutDogSitter', $sAboutDogSitter);
         $stmt->execute();
-
-
         
-    $stmt2 = $db->prepare("UPDATE users SET is_dog_sitter = 1 WHERE id = :sUserId");
-    $stmt2->bindValue(':sUserId', $sUserId);
-    $stmt2->execute();
+        $stmt2 = $db->prepare("UPDATE users SET is_dog_sitter = 1 WHERE id = :sUserId");
+        $stmt2->bindValue(':sUserId', $sUserId);
+        $stmt2->execute();
     }
 
 
    if( !$stmt0->execute() ){
        $db->rollBack();
-       echo 'Cannot insert the dog sitter '.__LINE__;
+    //    echo 'Cannot insert the dog sitter '.__LINE__;
        sendResponse(0, __LINE__, "Cannot save dog sitter to DB");
-       exit;
+    //    exit;
    }
 
    if( !$stmt2->execute() ){
-       echo 'Cannot update is_dog_sitter status '.__LINE__;
+    //    echo 'Cannot update is_dog_sitter status '.__LINE__;
+       sendResponse(0, __LINE__, "Cannot save dog sitter to DB");
        $db->rollBack();
-       exit;
+    //    exit;
    }
 
    $db->commit(); 

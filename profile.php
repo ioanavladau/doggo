@@ -4,7 +4,7 @@
         header('Location: login.php');
     }
 
-    $sUserId = $_SESSION['sEmail'];
+    $sUserEmail = $_SESSION['sEmail'];
     
 
     // Check if the client is active
@@ -17,14 +17,40 @@
     // }
 
 
-    $sLinktoExtraCss = '<link rel="stylesheet" href="css/white-theme.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />';
+    $sLinktoExtraCss = '<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />';
     $sProfileLink = 'profile';
     $sSettingsLink = 'settings';
     $sGreyBodyClass = "class='grey-bg'";
+    $sHeaderLink = "<script> window.sUserEmail = '$sUserEmail'; </script>";
     require_once 'top-logged-in.php';
 ?>
+
+
+
 <div class="container contents-centered">
         <div class="card ">
+            <p id="is-dog-sitter">
+                <?php
+                    require_once __DIR__.'/apis/connect.php';
+                    $stmt = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
+                    $stmt->bindValue(':sUserEmail', $sUserEmail);
+                    $stmt->execute();
+                    $aRows = $stmt->fetchAll();
+                    
+                    if ($aRows == []){
+                        echo 'Not a dogsitter';
+                    }
+                    
+                    foreach( $aRows as $aRow ){
+                        $sUserId = $aRow->id;
+                        // echo $sUserId;
+                        echo "$sUserEmail with sUserId $sUserId is a dog sitter";
+                    }
+                    
+                ?>
+            </p>
+
+
             <input type="text" name="daterange" id="availability" value="01/01/2018 - 01/15/2018" />
             <div class="available-times">
                 <div class="available-time" id="morning">6:00-11:00</div>
@@ -40,4 +66,5 @@
 
 <?php 
 $sLinktoScript = '<script src="js/profile.js"></script>';
-require_once 'bottom.php'; ?>
+require_once 'bottom.php'; 
+?>
