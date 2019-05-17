@@ -69,7 +69,7 @@ footer {
 .height-auto {
   height: auto; }
 
-.card {
+.card, .white-card {
   background-color: white;
   width: 40vw;
   padding: 40px;
@@ -77,12 +77,18 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .card input {
+  .card input, .white-card input {
     display: block;
     width: 35vw;
     margin: 5px 0 35px 0; }
-  .card label {
+  .card label, .white-card label {
     margin-bottom: 10px; }
+
+.white-card {
+  width: auto;
+  margin: 0;
+  flex-direction: row;
+  margin-top: 10px; }
 
 input {
   height: 40px;
@@ -124,5 +130,45 @@ input {
 .time-active {
   border: 2px solid green;
   box-sizing: border-box; }
+
+.search-results {
+  display: flex;
+  width: 100%;
+  justify-content: space-between; }
+
+.search-bar {
+  flex: 1.5;
+  margin-right: 10px; }
+
+.dog-sitters {
+  flex: 3; }
+
+.photo {
+  flex: 1; }
+
+.photo img {
+  height: 100px;
+  width: 100px; }
+
+.about {
+  flex: 2; }
+  .about p {
+    margin: 5px 0; }
+  .about h1 {
+    margin: 5px 0; }
+
+.fare {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; }
+
+h1 {
+  color: #f5ab25; }
+
+h2 {
+  font-weight: normal; }
+
+.address {
+  font-size: 13px; }
 
 /*# sourceMappingURL=style.css.map */

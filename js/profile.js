@@ -1,6 +1,7 @@
 let sStartDate
 let sEndDate
 let sSelectedTime
+let sTimestampStartDate
 
 $(function() {
 $('input[name="daterange"]').daterangepicker({
@@ -11,8 +12,11 @@ $('input[name="daterange"]').daterangepicker({
 }, function(start, end, label) {
     sStartDate = start.format('YYYY-MM-DD')
     sEndDate = end.format('YYYY-MM-DD')
-    console.log(sStartDate)
-    console.log(sEndDate)
+    sTimestampStartDate = (new Date(sStartDate)).getTime()
+    sTimestampEndDate = (new Date(sEndDate)).getTime()
+
+    console.log('Start date in seconds: '+sTimestampStartDate)
+    console.log('End date in seconds: '+sTimestampEndDate)
 });
 });
 
@@ -35,8 +39,8 @@ $('#add-availability').click(function(){
         method:'GET',
         url:'apis/api-pass-available-dates.php',
         data: {
-            'sStartDate': sStartDate,
-            'sEndDate' : sEndDate,
+            'sStartDate': sTimestampStartDate,
+            'sEndDate' : sTimestampEndDate,
             'sTimeInterval': sSelectedTime,
             'sUserEmail': window.sUserEmail
         },
