@@ -7,6 +7,7 @@
     <title>Doggo</title>
     <link rel="stylesheet" href="css/style.css">
     <?php echo $sLinktoExtraCss ?? ''; ?>
+    <?php echo $sHeaderLink ?? ''; ?>
 </head>
 <body <?= $sGreyBodyClass ?? "" ?> >
     <nav class="shadow">

@@ -3,21 +3,21 @@ let sEndDate
 let sSelectedTime
 
 $(function() {
-  $('input[name="daterange"]').daterangepicker({
+$('input[name="daterange"]').daterangepicker({
     opens: 'left',
     locale: {
-        "format": "MM/DD/YYYY",
-      }
-  }, function(start, end, label) {
+        'format': 'MM/DD/YYYY',
+    }
+}, function(start, end, label) {
     sStartDate = start.format('YYYY-MM-DD')
     sEndDate = end.format('YYYY-MM-DD')
     console.log(sStartDate)
     console.log(sEndDate)
-  });
+});
 });
 
 $('.available-time').click(function(){
-    sSelectedTime = $(this).attr("id")
+    sSelectedTime = $(this).attr('id')
     console.log(sSelectedTime)
     $('.available-time').removeClass('time-active')
     $(this).addClass('time-active')
@@ -32,35 +32,30 @@ $('#add-availability').click(function(){
 
 
     $.ajax({
-        method:"GET",
-        url:"apis/api-pass-available-dates.php",
+        method:'GET',
+        url:'apis/api-pass-available-dates.php',
         data: {
-            "sStartDate": sStartDate,
-            "sEndDate" : sEndDate,
-            "sTimeInterval": sSelectedTime
+            'sStartDate': sStartDate,
+            'sEndDate' : sEndDate,
+            'sTimeInterval': sSelectedTime,
+            'sUserEmail': window.sUserEmail
         },
-        dataType:"JSON"
+        dataType:'JSON'
     }).done(function(jData){
         console.log(jData)
         if(jData.status == 1){
-            // swal({
-            //     title: "You have signed up",
-            //     text: "You can login now",
-            //     icon: "success",
-            //     buttons: {
-            //         backToLogin: {
-            //           text: "Close",
-            //           value: "backToLogin",
-            //         },
-            //       },
-            // });
+            swal({
+                title: 'Available period added',
+                // text: 'You can login now',
+                icon: 'success',
+            });
             // $('#frmSignup')[0].reset()
             console.log('success')
         }else{
             // swal({
-            //     title: "Can't sign you up!",
+            //     title: 'Can't sign you up!',
             //     text: jData.message,
-            //     icon: "warning",
+            //     icon: 'warning',
             // });
         }
     }).fail(function(){

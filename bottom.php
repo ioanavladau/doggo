@@ -12,6 +12,8 @@
 
 <?php echo $sUserData ?? ''; ?>
 <?php echo $sLinktoScript ?? ''; ?>
+<?php echo $sLinktoExtraScript ?? ''; ?>
+
 <?php echo $sChatScript ?? ''; ?>
 
 </body>
