@@ -42,9 +42,9 @@
     </div>
     
     <template id="dogSitterTemplate">
-		<div>
-		
-		</div>
+		<!-- <a class="dog-sitter-card" href=""> -->
+		<div></div>
+		<!-- </a> -->
 	</template>
 
 </div>
@@ -52,6 +52,6 @@
 
 
 <?php 
-    $sLinktoScript = '<script src="js/search-results.js"></script>';
+    $sLinktoScript = '<script src="js/search.js"></script>';
     require_once 'bottom.php'; 
 ?>

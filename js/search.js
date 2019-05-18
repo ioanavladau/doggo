@@ -1,25 +1,6 @@
 let sSearchDate
 let sTimestampSearchDate
 
-// $(function() {
-// $('input[name="daterange"]').daterangepicker({
-//     opens: 'left',
-//     locale: {
-//         'format': 'MM/DD/YYYY',
-//     }
-// }, function(start, end, label) {
-//     sStartDate = start.format('YYYY-MM-DD')
-//     sEndDate = end.format('YYYY-MM-DD')
-//     sTimestampStartDate = (new Date(sStartDate)).getTime()
-//     sTimestampEndDate = (new Date(sEndDate)).getTime()
-
-//     console.log('Start date in seconds: '+sTimestampStartDate)
-//     console.log('End date in seconds: '+sTimestampEndDate)
-// });
-// });
-
-
-
 $(function() {
     $('input[name="searchdate"]').daterangepicker({
       singleDatePicker: true,
@@ -74,3 +55,8 @@ $('#searchForDate').click(function(){
 
     return false
 })
+
+// $('dog-sitter-card').click(function(){
+    
+
+// })
