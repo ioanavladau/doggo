@@ -21,26 +21,16 @@
     $sProfileLink = 'profile';
     $sSettingsLink = 'settings';
     $sGreyBodyClass = "class='grey-bg'";
-<<<<<<< HEAD
-    $sHeaderLink = "<script> window.sUserEmail = '$sUserId'</script>";
+    $sHeaderLink = "<script> window.sUserEmail = '$sUserEmail'</script>";
 
     
     require_once 'top-logged-in.php';
 ?>
 <div class="container three-grid">
-=======
-    $sHeaderLink = "<script> window.sUserEmail = '$sUserEmail'; </script>";
-    require_once 'top-logged-in.php';
-?>
-
-
-
-<div class="container contents-centered">
->>>>>>> ccf35fdaece67634cace9b8712ad92392fead81e
         <div class="card ">
             <p id="is-dog-sitter">
                 <?php
-                    require_once __DIR__.'/apis/connect.php';
+                    require_once __DIR__.'/connect.php';
                     $stmt = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
                     $stmt->bindValue(':sUserEmail', $sUserEmail);
                     $stmt->execute();
