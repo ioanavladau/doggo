@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Doggo</title>
     <link rel="stylesheet" href="css/style.css">
+<<<<<<< HEAD
+    <?php echo $sLinktoExtraCss ?? ''; ?>
+    <?php echo $sHeaderLink ?? ''; ?>
+=======
     <?php echo $sLinktoExtraCss ?? '';?>
 
     <?php 
     $sUserEmail = $_SESSION['sEmail'];
     echo $sHeaderLink ?? '';?>
+>>>>>>> ccf35fdaece67634cace9b8712ad92392fead81e
 </head>
 <body <?= $sGreyBodyClass ?? "" ?> >
     <nav class="shadow">
