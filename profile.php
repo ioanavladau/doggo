@@ -27,17 +27,20 @@
     
     require_once 'top-logged-in.php';
 ?>
-<div class="container contents-centered">
+<div class="container three-grid">
         <div class="card ">
             <input type="text" name="daterange" id="availability" value="01/01/2018 - 01/15/2018" />
             <div class="available-times">
-                <div class="available-time" id="morning">6:00-11:00</div>
-                <div class="available-time" id="noon">11:00-15:00</div>
-                <div class="available-time" id="evening">15:00-20:00</div>
+                <div class="available-time first-time-span" id="morning">6:00-11:00</div>
+                <div class="available-time second-time-span" id="noon">11:00-15:00</div>
+                <div class="available-time third-time-span" id="evening">15:00-20:00</div>
             </div>
 
                 <button class="yellow-btn" id="add-availability">Add availability</button>
 
+        </div>
+        <div class="card">
+            <div class="availability">Hi</div>
         </div>
 </div>
 

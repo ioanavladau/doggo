@@ -2,7 +2,7 @@
 
 // ini_set('display_errors',0);
 
-require_once __DIR__.'/connect.php';
+require_once '../connect.php';
 
 $sSearchDate = $_GET['sSearchDate'] ?? '';
 $sUserEmail = $_GET['sUserEmail'] ?? '';

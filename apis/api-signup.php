@@ -1,8 +1,8 @@
 <?php
 
-ini_set('display_errors',0);
+// ini_set('display_errors',0);
 
-require_once __DIR__.'/connect.php';
+require_once '../connect.php';
 
 $sName = $_POST['txtSignupName'] ?? '';
 if( empty($sName) ){

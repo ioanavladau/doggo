@@ -96,7 +96,9 @@ input {
   height: 40px;
   padding: 0 10px;
   border-style: none;
-  border: 1px solid #e0e0e0; }
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+  font-family: "Lato", sans-serif; }
 
 .contents-centered {
   display: flex;
@@ -120,17 +122,31 @@ input {
   margin-bottom: 30px; }
 
 .available-times {
-  display: flex; }
+  display: flex;
+  width: 100%; }
 
 .available-time {
-  height: 50px;
-  width: 50px;
-  background-color: lightgray;
-  margin-right: 10px;
-  cursor: pointer; }
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid lightgray;
+  flex: 1;
+  box-sizing: border-box; }
+
+.first-time-span {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none; }
+
+.third-time-span {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left: none; }
 
 .time-active {
-  border: 2px solid green;
+  border: 2px solid #80ba23;
   box-sizing: border-box; }
 
 .search-results {
@@ -175,5 +191,36 @@ h2 {
 
 .address {
   font-size: 13px; }
+
+.about-photo img {
+  height: 170px;
+  border-radius: 50%; }
+
+.about-text {
+  margin-left: 30px; }
+
+.about-header {
+  display: flex;
+  align-items: center; }
+
+.three-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px; }
+  .three-grid .card {
+    width: auto; }
+
+#availability {
+  margin-bottom: 10px;
+  background-image: url(../images/calendar-black.svg);
+  background-position: 285px center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  padding-right: 10px;
+  width: 300px; }
+
+.available-times {
+  margin-bottom: 10px; }
 
 /*# sourceMappingURL=style.css.map */
