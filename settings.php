@@ -11,13 +11,33 @@
     
     require_once 'top-logged-in.php';
 
+    // GETTING USER ID AND STORING IT IN $userId
+
+    require_once __DIR__.'/connect.php';
+    $stmtUserId = $db->prepare("SELECT id FROM users WHERE email = :sUserEmail");
+    $stmtUserId->bindValue(':sUserEmail', $sUserEmail);
+    $stmtUserId->execute();
+    $rowUserId = $stmtUserId->fetch();
+
+    $userId = $rowUserId->id;
+
+    // PROFILE PHOTO UPLOAD FOR USERS
+
     $target_dir = "images/profile-photo/";
+    // $target_dir_dog_sitters = "images/dog-sitter-photos/";
 
     if(!isset($_FILES["fileToUpload"]["name"])){
       $target_file = '';
     } else {
       $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     }
+
+    // FOR DOGSITTERS
+    // if(!isset($_FILES["filesToUpload"]["name"])){
+    //   $target_file_dog_sitters = '';
+    // } else {
+    //   $target_file_dog_sitters = $target_dir_dog_sitters . basename($_FILES["filesToUpload"]["name"]);
+    // };
     // $target_file = $target_dir.uniqid();
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -58,22 +78,27 @@
               // echo "The file ". $target_file . " has been uploaded.";
               require_once __DIR__.'/connect.php';
               $stmt = $db->prepare("UPDATE users SET profile_photo_url = :profilePhotoUrl WHERE email = :sUserEmail");
-              
               $stmt->bindValue(':profilePhotoUrl', $target_file);
               $stmt->bindValue(':sUserEmail', $sUserEmail);
               $stmt->execute();
-          } else {
+          }
+          else {
               echo "Sorry, there was an error uploading your file.";
           }
         }
 
     }
 
-    require_once __DIR__.'/connect.php';
+
+    
     $stmt = $db->prepare("SELECT profile_photo_url FROM users WHERE email = :sUserEmail");
+    $stmt2 = $db->prepare("SELECT is_dog_sitter FROM users WHERE email = :sUserEmail");
     
     $stmt->bindValue(':sUserEmail', $sUserEmail);
     $stmt->execute();
+    
+    $stmt2->bindValue(':sUserEmail', $sUserEmail);
+    $stmt2->execute();
 
     $row = $stmt->fetch();
 
@@ -82,6 +107,15 @@
     } else {
       $sImagePath = $row->profile_photo_url;
     }
+
+    $row2 = $stmt2->fetch();
+
+    if($row2->is_dog_sitter == 0){
+      $hideDogSitterUploadPhotosContainer = "hide";
+    }
+
+    include 'upload-dogsitter-photos.php';
+
 
     
 
@@ -126,6 +160,17 @@
       <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()">
       <input type="submit" value="Upload Image" name="submit">
     </form>
+
+
+      <!-- THIS DIV IS SHOWN ONLY IF THE USER IS A DOGSITTER -->
+    <div id="dogsitter-photos" class='<?php echo $hideDogSitterUploadPhotosContainer?>'>
+      <form id="frmUploadDogSitterPhotos" action='settings.php' method="post" enctype="multipart/form-data">
+        Select dogsitter images to upload:
+        <input type="file" name="dogSitterPhotos[]" id="dogSitterPhoto" multiple>
+        <input type="submit" value="Upload Images" name="submitDogSitterPhotos">
+      </form>
+    </div>
+
 </div>
 
 
