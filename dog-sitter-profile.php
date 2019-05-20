@@ -10,12 +10,13 @@
     $sProfileLink = 'profile';
     $sSettingsLink = 'settings';
     // $sGreyBodyClass = "class='grey-bg'";
-    $sHeaderLink = "<script> window.sUserEmail = '$sUserId'</script>";
+    
 
-    require_once 'top-logged-in.php';
+    
 
     require_once 'connect.php';
     $sDogSitterId = $_GET['id'] ?? '';
+    
 
     $stmt = $db->prepare( 'SELECT id, first_name, last_name, email, profile_photo_url, address FROM users WHERE id=:sDogSitterId' );
     $stmt->bindValue(':sDogSitterId', $sDogSitterId);
@@ -28,6 +29,9 @@
         $sPhotoUrl = $aRow->profile_photo_url;
     }
 
+    $sHeaderLink = "<script> window.sDogSitterId = '$sEmail'</script>";
+    require_once 'top-logged-in.php';
+
     $stmttwo = $db->prepare( 'SELECT fare, about FROM dog_sitters INNER JOIN users ON users.id = dog_sitters.user_fk WHERE user_fk=:sDogSitterId' );
     $stmttwo->bindValue(':sDogSitterId', $sDogSitterId);
     $stmttwo->execute();
@@ -37,6 +41,8 @@
         $sFare = $aRow->fare;
         $sAbout = $aRow->about;
     }
+
+    
 
 ?>
 

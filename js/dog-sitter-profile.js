@@ -3,7 +3,7 @@ window.onload = function(){
         method:'GET',
         url:'apis/api-get-available-dates.php',
         data: {
-            'sUserEmail': window.sUserEmail
+            'sUserEmail': window.sDogSitterId
         },
         dataType:'JSON'
     }).done(function(jData){
