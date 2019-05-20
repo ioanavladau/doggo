@@ -216,6 +216,14 @@ h2 {
   .three-grid .card {
     width: auto; }
 
+.two-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px; }
+  .two-grid .card {
+    width: auto; }
+
 #availability {
   margin-bottom: 10px;
   background-image: url(../images/calendar-black.svg);
@@ -227,5 +235,71 @@ h2 {
 
 .available-times {
   margin-bottom: 10px; }
+
+.small-photo {
+  height: 100px;
+  width: 100px; }
+
+.row {
+  display: flex; }
+
+.about-profile {
+  margin-left: 15px; }
+
+.card-title {
+  text-transform: uppercase;
+  font-family: "Rubik", sans-serif;
+  color: grey;
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 16px; }
+
+.card-with-a-title {
+  padding: 0 40px 40px 40px; }
+  .card-with-a-title .row {
+    margin-top: 30px;
+    display: flex;
+    align-items: center; }
+  .card-with-a-title h1 {
+    margin-top: 0; }
+
+.is-dog-sitter {
+  text-transform: uppercase;
+  font-family: "Rubik", sans-serif;
+  color: #66727c;
+  font-size: 12px;
+  display: flex;
+  align-items: center; }
+
+.availability-calendar {
+  margin-top: 30px; }
+  .availability-calendar table, .availability-calendar td {
+    border: 1px solid gray; }
+
+.fc-scroller {
+  height: auto !important; }
+
+.width-320 {
+  width: 320px !important; }
+
+.margin-top-30 {
+  margin-top: 30px; }
+
+.fc-today-button {
+  display: none !important; }
+
+.fc-dayGrid-view .fc-body .fc-row {
+  min-height: 3em !important; }
+
+.fc-button-primary {
+  background-color: #f5ab25 !important;
+  border-color: #f5ab25 !important; }
+
+.red {
+  color: red !important;
+  font-size: 33px !important;
+  border: 1px solid red !important; }
 
 /*# sourceMappingURL=style.css.map */
