@@ -19,24 +19,21 @@
     <div class="search-results">
         <div class="search-bar white-card">
             <form>
-            <input type="text" name="searchdate" value="01/01/2018" />
+                <input type="text" name="searchdate" id="availability" value="05/01/2019" />
+                <div class="available-times">
+                    <div class="available-time first-time-span" id="morning">6:00-11:00</div>
+                    <div class="available-time second-time-span" id="noon">11:00-15:00</div>
+                    <div class="available-time third-time-span" id="evening">15:00-20:00</div>
+                </div>
+            <!-- <input type="text" name="searchdate" value="01/01/2018" /> -->
                 <button class="yellow-btn" id="searchForDate">Search</button>
             </form>
         </div>
 
         <div class="dog-sitters" id="dogSitterResults">
             <div class="white-card">
-                <div class="photo">
-                    <img src="images/0.jpg" alt="">
-                </div>
-                <div class="about">
-                    <h1>Name</h1>
-                    <p>About</p>
-                    <p class="address">Address</p>
-                </div>
-                <div class="fare">
-                    <h2>$25</h2>
-                </div>
+                <p style="color: lightgray;">Select a date and a time period in the search bar on the left</p>
+                
             </div>
         </div>
     </div>

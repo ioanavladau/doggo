@@ -10,7 +10,7 @@
     $sProfileLink = 'profile';
     $sSettingsLink = 'settings';
     // $sGreyBodyClass = "class='grey-bg'";
-    // $sHeaderLink = "<script> window.sUserEmail = '$sUserId'</script>";
+    $sHeaderLink = "<script> window.sUserEmail = '$sUserId'</script>";
 
     require_once 'top-logged-in.php';
 
@@ -40,32 +40,54 @@
 
 ?>
 
-<div class="container">
-    <div class="about-header">
-        <div class="about-photo">
-            <img src="<?= $sPhotoUrl ?>" alt="">
-        </div>
-        <div class="about-text">
-            <h1><?= $sFullName ?></h1>
-            <p><?= $sAbout ?></p>
-        </div>
-    </div>
-    <div class="services">
-        <span>Dog walking</span>
-        <span>DKK <?= $sFare ?></span>
-    </div>
-    <div class="availability">
-        
-    </div>
+<div class="container">   
     
+    <div class="dog-sitter-profile">
+        <div class="left-column">
+            <div class="about-photo">
+                <img src="<?= $sPhotoUrl ?>" alt="">
+            </div>
+
+            <div class="services">
+                <span>Dog walking</span>
+                <span>DKK <?= $sFare ?></span>
+            </div>
+
+            <div class="availability-calendar">
+                <div id='calendar'></div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="about-text">
+                <h1><?= $sFullName ?></h1>
+                <p><?= $sAbout ?></p>
+            </div>
+        </div>
+    </div>
     
     
     
     
 </div>
 
+<script src='fullcalendar/core/main.js'></script>
+<script src='fullcalendar/daygrid/main.js'></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'dayGrid' ]
+    });
+
+    calendar.render();
+    });
+
+</script>
 
 <?php 
-    $sLinktoScript = '<script src="js/search.js"></script>';
+    $sLinktoScript = '<script src="js/dog-sitter-profile.js"></script>';
     require_once 'bottom.php'; 
 ?>

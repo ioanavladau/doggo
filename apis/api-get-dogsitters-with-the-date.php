@@ -5,14 +5,18 @@
 require_once '../connect.php';
 
 $sSearchDate = $_GET['sSearchDate'] ?? '';
+$sSearchTimeInterval = $_GET['sSearchTimeInterval'] ?? '';
 $sUserEmail = $_GET['sUserEmail'] ?? '';
 
 $stmt = $db->prepare( 'SELECT id, first_name, last_name, email, profile_photo_url, address
 FROM users 
-WHERE id IN (SELECT user_fk 
+WHERE NOT email = :sUserEmail AND id IN (SELECT user_fk 
               FROM dog_sitters_availability
-             WHERE :sSearchDate BETWEEN start_date AND end_date) AND is_dog_sitter=1' );
+             WHERE time_interval = :sSearchTimeInterval AND :sSearchDate BETWEEN start_date AND end_date) AND is_dog_sitter=1' );
+
 $stmt->bindValue(':sSearchDate', $sSearchDate);
+$stmt->bindValue(':sSearchTimeInterval', $sSearchTimeInterval);
+$stmt->bindValue(':sUserEmail', $sUserEmail);
 $stmt->execute();
 $aRows = $stmt->fetchAll();
 
