@@ -11,6 +11,10 @@
     <?php 
     $sUserEmail = $_SESSION['sEmail'];
     echo $sHeaderLink ?? '';?>
+    <link href='fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+
+    
 </head>
 <body <?= $sGreyBodyClass ?? "" ?> >
     <nav class="shadow">
@@ -53,3 +57,5 @@
             <a href="logout">Logout</a>
         </div>
     </nav>
+
+    

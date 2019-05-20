@@ -25,56 +25,100 @@
 
     
     require_once 'top-logged-in.php';
+    
+
+    //*************************DB stuff******************************/
+    require_once 'connect.php';
+    // $sDogSitterId = $_GET['id'] ?? '';
+
+    $stmt = $db->prepare( 'SELECT id, first_name, last_name, email, profile_photo_url, address FROM users WHERE email=:sUserEmail' );
+    $stmt->bindValue(':sUserEmail', $sUserEmail);
+    $stmt->execute();
+    $aRows = $stmt->fetchAll();
+
+    foreach( $aRows as $aRow ){
+        $sFullName = $aRow->first_name.' '.$aRow->last_name;
+        $sProfilePhotoUrl = $aRow->profile_photo_url;
+    }
+
+    $stmttwo = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
+    $stmttwo->bindValue(':sUserEmail', $sUserEmail);
+    $stmttwo->execute();
+    $aRowsTwo = $stmttwo->fetchAll();
+    
+    if ($aRowsTwo == []){
+        echo 'not a dogsitter'; 
+    }
+    
+    foreach( $aRowsTwo as $aRow ){
+        $sUserId = $aRow->id;
+        $sIsDogSitter = '<div class="is-dog-sitter"><img src="images/dog.svg" class="small-icon">Dog sitter</div>';
+    }
+
+
 ?>
-<div class="container three-grid">
-        <div class="card ">
-            <p id="is-dog-sitter">
-                <?php
-                    require_once __DIR__.'/connect.php';
-                    $stmt = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
-                    $stmt->bindValue(':sUserEmail', $sUserEmail);
-                    $stmt->execute();
-                    $aRows = $stmt->fetchAll();
 
-                    if ($aRows == []){
-                        // sendResponse(-1, __LINE__, "User is not a dogsitter");
-                        // exit;
-
-                        echo 'not a dogsitter';
-                    }
-                    
-                    foreach( $aRows as $aRow ){
-                        $sUserId = $aRow->id;
-                        // echo $sUserId;
-                        echo "$sUserEmail with sUserId $sUserId is a dog sitter";
-                    }
-                    
-                    /********************************/
-                    
-                    function sendResponse($iStatus, $iLine, $sMessage){
-                        echo '{"status": '.$iStatus.', "code": "'.$iLine.'", "message":"'.$sMessage.'"}';
-                        exit;
-                    }
-                ?>
-            </p>
-
-
-            <input type="text" name="daterange" id="availability" value="01/01/2018 - 01/15/2018" />
-            <div class="available-times">
-                <div class="available-time first-time-span" id="morning">6:00-11:00</div>
-                <div class="available-time second-time-span" id="noon">11:00-15:00</div>
-                <div class="available-time third-time-span" id="evening">15:00-20:00</div>
+<div class="container two-grid">
+        <div class="card card-with-a-title ">
+            <div class="card-title">
+                Profile info
             </div>
 
+
+            
+            <div class="row">
+                <img class="small-photo" src="<?= $sProfilePhotoUrl ?>" alt="">
+                <div class="about-profile">
+                    <h1><?= $sFullName ?></h1>
+                    <?= $sIsDogSitter ?? "" ?>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card card-with-a-title">
+            <div class="card-title">
+                Availability calendar
+            </div>
+            <div class="width-320 margin-top-30">
+                <input type="text" name="daterange" id="availability" value="01/01/2018 - 01/15/2018" />
+                <div class="available-times">
+                    <div class="available-time first-time-span" id="morning">6:00-11:00</div>
+                    <div class="available-time second-time-span" id="noon">11:00-15:00</div>
+                    <div class="available-time third-time-span" id="evening">15:00-20:00</div>
+                </div>
+
                 <button class="yellow-btn" id="add-availability">Add availability</button>
+            </div>
+
+
+        <div class="availability-calendar">
+            <div id='calendar'></div>
+        </div>
+            
 
         </div>
         <div class="card">
-            <div class="availability">Hi</div>
+            
         </div>
 </div>
 
 
+
+<script src='fullcalendar/core/main.js'></script>
+<script src='fullcalendar/daygrid/main.js'></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'dayGrid' ]
+    });
+
+    calendar.render();
+    });
+
+</script>
 <?php 
 $sLinktoScript = '<script src="js/profile.js"></script>';
 require_once 'bottom.php'; 
