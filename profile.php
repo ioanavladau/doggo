@@ -57,11 +57,14 @@
 
 
 ?>
+
 <div class="container two-grid">
-        <div class="card card-with-a-title">
+        <div class="card card-with-a-title ">
             <div class="card-title">
                 Profile info
             </div>
+
+
             
             <div class="row">
                 <img class="small-photo" src="<?= $sProfilePhotoUrl ?>" alt="">
