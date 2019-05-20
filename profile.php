@@ -35,7 +35,7 @@
                     $stmt->bindValue(':sUserEmail', $sUserEmail);
                     $stmt->execute();
                     $aRows = $stmt->fetchAll();
-                    
+
                     if ($aRows == []){
                         // sendResponse(-1, __LINE__, "User is not a dogsitter");
                         // exit;

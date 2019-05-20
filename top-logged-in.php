@@ -30,6 +30,7 @@
                     $stmt = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
                     $stmt->bindValue(':sUserEmail', $sUserEmail);
                     $stmt->execute();
+
                     $aRows = $stmt->fetchAll();
                     
                     if ($aRows == []){
