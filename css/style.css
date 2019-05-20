@@ -305,4 +305,11 @@ h2 {
 .hide {
   display: none; }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: ". . . ." ". . . ." ". . . ."; }
+  .grid-container div img {
+    width: 100%; }
+
 /*# sourceMappingURL=style.css.map */
