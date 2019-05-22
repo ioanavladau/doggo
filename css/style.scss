@@ -133,6 +133,7 @@ textarea{
     border-style: none;
     font-family: $Rubik;
     font-size: 17px;
+    cursor: pointer;
 }
 .login-links{
     display: flex;
@@ -305,6 +306,9 @@ h2{
 .width-320{
     width: 320px !important;
 }
+.width-100{
+    width: 100%;
+}
 .margin-top-30{
     margin-top: 30px;
 }
@@ -318,13 +322,46 @@ h2{
     background-color: $yellowprimary !important;
     border-color: $yellowprimary !important;
 }
-.red{
-    color: red !important;
-    font-size: 33px !important;
-    border: 1px solid red !important;
+.green-date{
+   
+    // font-size: 33px !important;
+    // border: 1px solid red !important;
+    background-color: #80ba23 !important;
+    span{
+        color: white !important;
+    }
+    
 }
 .hide{
     display: none;
+}
+.fc-button-group{
+    display: none !important;
+}
+.fc-day{
+    background-color: #efefef
+}
+.fc-day-number{
+    color: #babdc0;
+}
+.fc-unthemed th, .fc-unthemed td, .fc-unthemed thead, .fc-unthemed tbody, .fc-unthemed .fc-divider, .fc-unthemed .fc-row, .fc-unthemed .fc-content, .fc-unthemed .fc-popover, .fc-unthemed .fc-list-view, .fc-unthemed .fc-list-heading td{
+    border-color: #f4f4f4 !important;
+}
+.fc-unthemed td.fc-today{
+    background: #efefef;
+}
+.dog-sitter-profile{
+    display: flex;
+    .left-column{
+        flex: 1;
+    }
+    .right-column{
+        flex: 2;
+    }
+}
+#booking-message{
+    height: 100px;
+    padding: 10px;
 }
 
 .grid-container {

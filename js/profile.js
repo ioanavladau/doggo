@@ -79,8 +79,9 @@ $('#add-availability').click(function(){
 })
 
 // window.onload = function(){
-    // Button click doesn't return json response from the api
-$('button.fc-prev-button').click(function(){
+//     $('button.fc-next-button').addClass('red')
+// }
+window.onload = function(){
     $.ajax({
         method:'GET',
         url:'apis/api-get-available-dates.php',
@@ -106,7 +107,7 @@ $('button.fc-prev-button').click(function(){
             aAvailableDates.forEach(function(availableDate){
                 console.log(availableDate)
                 let foundelement = $("tr").find("td[data-date='" + availableDate +"']")
-                foundelement.addClass('red')
+                foundelement.addClass('green-date')
                 
                 // let targetTd = $('.fc-day').data("date", "2019-05-19")
                 // targetTd.addClass('red')
@@ -131,4 +132,10 @@ $('button.fc-prev-button').click(function(){
     });
 
     return false
-})
+}   
+// $('button.fc-next-button').click(function(){
+//     availableDate = '2019-06-20'
+//     let foundelement = $("tr").find("td[data-date='" + availableDate +"']")
+//         foundelement.addClass('red')
+    
+// })

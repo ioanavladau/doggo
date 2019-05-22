@@ -1,5 +1,6 @@
 let sSearchDate
 let sTimestampSearchDate
+let sSelectedTime
 
 $(function() {
     $('input[name="searchdate"]').daterangepicker({
@@ -18,15 +19,25 @@ $(function() {
     });
   });
 
+$('.available-time').click(function(){
+    sSelectedTime = $(this).attr('id')
+    console.log(sSelectedTime)
+    $('.available-time').removeClass('time-active')
+    $(this).addClass('time-active')
+});
+
+
+
 $('#searchForDate').click(function(){
     let dogSitterResults = document.querySelector("#dogSitterResults")
     dogSitterResults.innerHTML = ""
-    
+        
     $.ajax({
         method:'GET',
         url:'apis/api-get-dogsitters-with-the-date.php',
         data: {
             'sSearchDate': sTimestampSearchDate,
+            'sSearchTimeInterval': sSelectedTime,
             'sUserEmail': window.sUserEmail,
         },
         dataType:'JSON'
@@ -60,3 +71,5 @@ $('#searchForDate').click(function(){
     
 
 // })
+
+

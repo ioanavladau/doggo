@@ -82,7 +82,7 @@
                 Availability calendar
             </div>
             <div class="width-320 margin-top-30">
-                <input type="text" name="daterange" id="availability" value="01/01/2018 - 01/15/2018" />
+                <input type="text" name="daterange" id="availability" value="05/01/2019 - 05/30/2019" />
                 <div class="available-times">
                     <div class="available-time first-time-span" id="morning">6:00-11:00</div>
                     <div class="available-time second-time-span" id="noon">11:00-15:00</div>
