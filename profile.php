@@ -5,6 +5,8 @@
     }
 
     $sUserEmail = $_SESSION['sEmail'];
+
+    
     
 
     // Check if the client is active
@@ -99,6 +101,11 @@
         </div>
         <div class="card">
             
+        </div>
+
+        <div class="card">
+            <a href="your-dogs">Add a pet</a>
+            <div><img src="images/plus.svg" class="small-icon"></div>
         </div>
 </div>
 
