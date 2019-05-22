@@ -112,6 +112,8 @@
 
     if($row2->is_dog_sitter == 0){
       $hideDogSitterUploadPhotosContainer = "hide";
+    } else{
+      $hideDogSitterUploadPhotosContainer = '';
     }
 
     include 'upload-dogsitter-photos.php';
@@ -152,18 +154,25 @@
 
 
 <div class="container">
-    <h1>Settings page</h1>
-    <img id="profile-photo-preview" src=<?php echo $sImagePath ?> style="width: 200px; height: 200px;">
+    <div>
+      <h1>My profile picture</h1>
+      <img id="profile-photo-preview" src=<?php echo $sImagePath ?> style="width: 200px; height: 200px;">
+      <form id="frmUploadProfilePhoto" action='settings.php' method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()">
+        <input type="submit" value="Upload Image" name="submit">
+      </form>
+    </div>
 
-    <form id="frmUploadProfilePhoto" action='settings.php' method="post" enctype="multipart/form-data">
-      Select image to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()">
-      <input type="submit" value="Upload Image" name="submit">
-    </form>
+    <!-- THIS DIV IS SHOWN ONLY IF THE USER IS A DOGSITTER -->
 
-
-      <!-- THIS DIV IS SHOWN ONLY IF THE USER IS A DOGSITTER -->
-    <div id="dogsitter-photos" class='<?php echo $hideDogSitterUploadPhotosContainer?>'>
+    <div id="dogsitter-photos-container" class='<?php echo $hideDogSitterUploadPhotosContainer?>'>
+      <h1>My dogsitter photos</h1>
+      <div class="grid-container">
+        <?php
+              include 'fetch-dogsitter-photos.php';
+        ?>
+      </div>
       <form id="frmUploadDogSitterPhotos" action='settings.php' method="post" enctype="multipart/form-data">
         Select dogsitter images to upload:
         <input type="file" name="dogSitterPhotos[]" id="dogSitterPhoto" multiple>
