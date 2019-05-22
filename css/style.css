@@ -342,4 +342,70 @@ h2 {
   .grid-container div img {
     width: 100%; }
 
+.container--tabs {
+  margin: 2rem;
+  width: 100%; }
+  .container--tabs .nav-tabs {
+    float: left;
+    width: 100%;
+    margin: 0;
+    list-style-type: none;
+    padding-inline-start: 0; }
+    .container--tabs .nav-tabs > li {
+      float: left; }
+      .container--tabs .nav-tabs > li > a {
+        float: left;
+        margin-right: 30px;
+        padding: 10px;
+        border: 3px solid transparent;
+        box-sizing: border-box;
+        font-family: "Rubik", sans-serif;
+        color: #66727c;
+        text-transform: uppercase; }
+        .container--tabs .nav-tabs > li > a:hover {
+          border-color: #f5ab25;
+          color: #f5ab25;
+          transition: border-color .5s ease; }
+      .container--tabs .nav-tabs > li.active > a,
+      .container--tabs .nav-tabs > li.active > a:hover,
+      .container--tabs .nav-tabs > li.active > a:focus {
+        color: #f5ab25;
+        text-transform: uppercase;
+        font-family: "Rubik", sans-serif;
+        cursor: default;
+        background-color: #fff;
+        border: 3px solid #f5ab25; }
+  .container--tabs .tab-content {
+    float: left;
+    width: 100%; }
+    .container--tabs .tab-content > .tab-pane {
+      display: none; }
+      .container--tabs .tab-content > .tab-pane.active {
+        display: block;
+        padding: 2.5% 1.5%; }
+    .container--tabs .tab-content > .active {
+      display: block; }
+
+thead {
+  text-align: left;
+  text-transform: uppercase;
+  font-family: "Rubik", sans-serif !important; }
+  thead .sitter {
+    width: 13vw; }
+  thead .pet {
+    width: 10vw; }
+  thead .date {
+    width: 11vw; }
+  thead .time-range {
+    width: 10vw; }
+  thead .message {
+    width: 21vw; }
+
+table {
+  width: 100%; }
+
+table tr {
+  height: 40px;
+  border-top: 1px solid gray; }
+
 /*# sourceMappingURL=style.css.map */

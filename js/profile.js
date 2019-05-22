@@ -61,6 +61,8 @@ $('#add-availability').click(function(){
                 title: 'Available period added',
                 // text: 'You can login now',
                 icon: 'success',
+            }).then(function(){
+                location.reload()
             });
             // $('#frmSignup')[0].reset()
             console.log('success')

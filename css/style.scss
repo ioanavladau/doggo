@@ -374,3 +374,106 @@ h2{
         }
     }
   }
+
+  .container--tabs {
+    margin: 2rem;
+    width: 100%;
+    
+
+	.nav-tabs {
+		float: left;
+		width: 100%;
+		margin: 0;
+		list-style-type: none;
+        padding-inline-start: 0;
+        
+		> li {
+			float: left;
+			// margin-bottom: -1px;
+
+			> a {
+				float: left;
+				margin-right: 30px;
+				// line-height: 1.42857143;
+				padding: 10px;
+                border: 3px solid transparent;
+                box-sizing: border-box;
+                font-family: $Rubik;
+                color: $grayish;
+                text-transform: uppercase;
+
+				&:hover {
+                    border-color: $yellowprimary;
+                    color: $yellowprimary;
+                    transition: border-color .5s ease;
+				}
+			}
+
+			&.active {
+				> a,
+				> a:hover,
+				> a:focus {
+                    color: $yellowprimary;
+                    text-transform: uppercase;
+                    font-family: $Rubik;
+					cursor: default;
+					background-color: #fff;
+                    border: 3px solid $yellowprimary;
+                    
+				}
+			}
+		}
+	}
+
+	.tab-content {
+		float: left;
+        width: 100%;
+        
+
+		> .tab-pane {
+            display: none;
+                    
+
+			&.active {
+				display: block;
+                padding: 2.5% 1.5%;
+                
+                
+                
+			}
+		}
+
+		> .active {
+            display: block;
+            
+		}
+	}
+
+}
+thead{
+    text-align: left;
+    text-transform: uppercase;
+    font-family: $Rubik !important;    
+    .sitter{
+        width: 13vw;
+    }
+    .pet{
+        width: 10vw;
+    }
+    .date{
+        width: 11vw;
+    }
+    .time-range{
+        width: 10vw;
+    }
+    .message{
+        width: 21vw;
+    }
+}
+table{
+    width: 100%;
+}
+table tr{
+    height: 40px;
+    border-top: 1px solid gray;
+}
