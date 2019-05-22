@@ -326,3 +326,14 @@ h2{
 .hide{
     display: none;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: ". . . ." ". . . ." ". . . .";
+    div{
+        img{
+            width: 100%;
+        }
+    }
+  }
