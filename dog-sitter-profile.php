@@ -12,10 +12,10 @@
     // $sGreyBodyClass = "class='grey-bg'";
     
 
-    
-
     require_once 'connect.php';
     $sDogSitterId = $_GET['id'] ?? '';
+    $sSearchDate = $_GET['sSearchDate'] ?? '';
+    $sSearchTimeInterval = $_GET['sSearchTimeInterval'] ?? '';
     
 
     $stmt = $db->prepare( 'SELECT id, first_name, last_name, email, profile_photo_url, address FROM users WHERE id=:sDogSitterId' );
@@ -25,11 +25,12 @@
 
     foreach( $aRows as $aRow ){
         $sEmail = $aRow->email;
+        $sFirstName = $aRow->first_name;
         $sFullName = $aRow->first_name.' '.$aRow->last_name;
         $sPhotoUrl = $aRow->profile_photo_url;
     }
 
-    $sHeaderLink = "<script> window.sDogSitterId = '$sEmail'</script>";
+    $sHeaderLink = "<script> window.sHeaderDogSitterEmail = '$sEmail'</script>";
     require_once 'top-logged-in.php';
 
     $stmttwo = $db->prepare( 'SELECT fare, about FROM dog_sitters INNER JOIN users ON users.id = dog_sitters.user_fk WHERE user_fk=:sDogSitterId' );
@@ -42,6 +43,14 @@
         $sAbout = $aRow->about;
     }
 
+    $sDateNormalized =  date("d/m/Y", substr($sSearchDate, 0, 10));
+    if($sSearchTimeInterval=='morning'){
+        $sTimePeriod = '06:00-11:00';
+    }else if($sSearchTimeInterval=='noon'){
+        $sTimePeriod = '11:00-15:00';
+    }else if($sSearchTimeInterval=='evening'){
+        $sTimePeriod = '15:00-22:00';
+    }
     
 
 ?>
@@ -68,6 +77,7 @@
             <div class="about-text">
                 <h1><?= $sFullName ?></h1>
                 <p><?= $sAbout ?></p>
+                <button class="yellow-btn" id="contact-dog-sitter" onclick="location.href='book-dogsitter.php?sDogSitterId=<?= $sDogSitterId ?>&sSearchDate=<?= $sSearchDate ?>&sSearchTimeInterval=<?= $sSearchTimeInterval ?>';">Contact <?= $sFirstName ?> for <?= $sDateNormalized ?>, <?= $sTimePeriod ?></button>
             </div>
         </div>
     </div>

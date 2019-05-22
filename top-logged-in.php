@@ -10,7 +10,8 @@
 
     <?php 
     $sUserEmail = $_SESSION['sEmail'];
-    echo $sHeaderLink ?? '';?>
+    echo $sHeaderLink ?? '';
+    echo $sHeaderLinkTwo ?? '';?>
     <link href='fullcalendar/core/main.css' rel='stylesheet' />
     <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
 
@@ -54,6 +55,7 @@
         <div class="right-nav">
             <a href="<?php echo $sProfileLink ?? 'profile'; ?>">Profile</a>
             <a href="<?php echo $sSettingsLink ?? 'settings'; ?>">Settings</a>
+            <a href="<?php echo $sBookingsLink ?? 'bookings'; ?>">Bookings</a>
             <a href="logout">Logout</a>
         </div>
     </nav>

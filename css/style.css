@@ -118,7 +118,8 @@ textarea {
   height: 50px;
   border-style: none;
   font-family: "Rubik", sans-serif;
-  font-size: 17px; }
+  font-size: 17px;
+  cursor: pointer; }
 
 .login-links {
   display: flex;
@@ -284,6 +285,9 @@ h2 {
 .width-320 {
   width: 320px !important; }
 
+.width-100 {
+  width: 100%; }
+
 .margin-top-30 {
   margin-top: 30px; }
 
@@ -326,5 +330,9 @@ h2 {
     flex: 1; }
   .dog-sitter-profile .right-column {
     flex: 2; }
+
+#booking-message {
+  height: 100px;
+  padding: 10px; }
 
 /*# sourceMappingURL=style.css.map */
