@@ -56,8 +56,6 @@
         $sUserId = $aRow->id;
         $sIsDogSitter = '<div class="is-dog-sitter"><img src="images/dog.svg" class="small-icon">Dog sitter</div>';
     }
-
-
 ?>
 
 <div class="container two-grid">
@@ -99,14 +97,20 @@
             
 
         </div>
-        <div class="card">
-            
-        </div>
 
-        <div class="card">
+
+        <div class="card" id="add-a-dog-container">
             <a href="your-dogs">Add a pet</a>
             <div><img src="images/plus.svg" class="small-icon"></div>
         </div>
+
+        <div class="dog-sitters" id="myDog">
+            <!-- <div class="white-card">
+                <p></p>
+            </div> -->
+        </div>
+
+        
 </div>
 
 
