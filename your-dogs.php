@@ -33,8 +33,8 @@
         <input type="radio" name="rbDogGender" value="female" class="radio" <?php if (isset($_POST['rbDogGender']) && $_POST['rbDogGender'] == 'female'): ?>checked='checked'<?php endif; ?> /> Female
         <input type="radio" name="rbDogGender" value="male"  class="radio" <?php if (isset($_POST['rbDogGender']) && $_POST['rbDogGender'] ==  'male'): ?>checked='checked'<?php endif; ?> />  Male <br>
         
-        <label for="txtsDogBreed">Breed</label>
-        <select name="txtsDogBreed" id="txtsDogBreed">
+        <label for="selDogBreed">Breed</label>
+        <select name="selDogBreed" id="selDogBreed">
           <?php
             require_once __DIR__.'/connect.php';
             $stmt = $db->prepare('SELECT name FROM breeds');
@@ -42,12 +42,12 @@
             $aRows = $stmt->fetchAll();
             $i=0;
             foreach($aRows as $jRow){
-             $i2 = $i++;
-            echo "
-                <option value='$i2'>
-                  $jRow->name
-                </option>
-                ";
+              $i++;
+              echo "
+                  <option value='$i'>
+                    $jRow->name
+                  </option>
+                  ";
             }
           ?>
         </select><br>

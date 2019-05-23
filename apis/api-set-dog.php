@@ -11,11 +11,11 @@ $iDogWeight = $_POST['txtiDogWeight'];
 $iDogYears = $_POST['txtiDogYears'];
 $iDogMonths = $_POST['txtiDogMonths'];
 
-if(isset($_POST['female'])){
+if(($_POST['rbDogGender']) == 'female'){
   $bDogGender = 1; 
 } else $bDogGender = 0; 
 
-$sDogBreed = $_POST['txtsDogBreed'];
+$iDogBreed = $_POST['selDogBreed'];
 
 if(($_POST['rbDogSpayedNeutered']) == 'yes'){
   $rbDogSpayedNeutered = 1; 
@@ -36,12 +36,12 @@ $sDogCareInstructions = $_POST['txtsDogCareInstructions'];
 
 
 $stmt = $db->prepare( "INSERT INTO dogs (id, user_fk, name, weight, breed_fk, age_years, age_months,  gender ,  spayed_neutered ,  microchipped ,  friendly ,  special_requirements ,vet_contact ,about , care_instructions) 
-VALUES (NULL, (SELECT id FROM users WHERE email = :sEmail), :sDogName, :iDogWeight, :bDogGender, :iDogYears, :iDogMonths,  :sDogBreed,   :bDogSpayedNeutered, :bDogMicrochipped, :bDogFriendlyWithOtherDogs, :sDogSpecialRequirements, :sDogVetContact, :sDogAbout, :sDogCareInstructions)" );
+VALUES (NULL, (SELECT id FROM users WHERE email = :sEmail), :sDogName, :iDogWeight, :iDogBreed, :iDogYears, :iDogMonths, :bDogGender, :bDogSpayedNeutered, :bDogMicrochipped, :bDogFriendlyWithOtherDogs, :sDogSpecialRequirements, :sDogVetContact, :sDogAbout, :sDogCareInstructions)" );
 
 $stmt->bindValue(':sEmail', $sUserEmail);
 $stmt->bindValue(':sDogName', $sDogName);
 $stmt->bindValue(':iDogWeight', $iDogWeight);
-$stmt->bindValue(':sDogBreed', $sDogBreed);
+$stmt->bindValue(':iDogBreed', $iDogBreed);
 $stmt->bindValue(':iDogYears', $iDogYears);
 $stmt->bindValue(':iDogMonths', $iDogMonths);
 $stmt->bindValue(':bDogGender', $bDogGender);
@@ -56,9 +56,9 @@ $stmt->bindValue(':sDogCareInstructions', $sDogCareInstructions);
 
 $stmt->execute();
 
-if(!$stmt->execute()){
-  sendResponse(0, __LINE__, 'dog NOT saved');
-}
+// if(!$stmt->execute()){
+//   sendResponse(0, __LINE__, 'dog NOT saved');
+// }
 
 sendResponse(1, __LINE__, 'dog saved');
 
