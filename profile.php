@@ -33,7 +33,7 @@
     require_once 'connect.php';
     // $sDogSitterId = $_GET['id'] ?? '';
 
-    $stmt = $db->prepare( 'SELECT id, first_name, last_name, email, profile_photo_url, address FROM users WHERE email=:sUserEmail' );
+    $stmt = $db->prepare( 'SELECT id, first_name, last_name, email, profile_photo_url, address, is_dog_sitter FROM users WHERE email=:sUserEmail' );
     $stmt->bindValue(':sUserEmail', $sUserEmail);
     $stmt->execute();
     $aRows = $stmt->fetchAll();
@@ -41,6 +41,9 @@
     foreach( $aRows as $aRow ){
         $sFullName = $aRow->first_name.' '.$aRow->last_name;
         $sProfilePhotoUrl = $aRow->profile_photo_url;
+        if($aRow->is_dog_sitter == 0){
+            $sClassHide = 'hide';
+        }
     }
 
     $stmttwo = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
@@ -48,9 +51,9 @@
     $stmttwo->execute();
     $aRowsTwo = $stmttwo->fetchAll();
     
-    if ($aRowsTwo == []){
-        echo 'not a dogsitter'; 
-    }
+    // if ($aRowsTwo == []){
+    //     echo 'not a dogsitter'; 
+    // }
     
     foreach( $aRowsTwo as $aRow ){
         $sUserId = $aRow->id;
@@ -77,7 +80,7 @@
             </div>
             
         </div>
-        <div class="card card-with-a-title">
+        <div class="card card-with-a-title <?= $sClassHide ?? '' ?>">
             <div class="card-title">
                 Availability calendar
             </div>

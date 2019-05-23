@@ -4,7 +4,6 @@
     
 // });
 
-
 window.onload = function(){
 
     let sBookingType = 'upcoming'
@@ -32,7 +31,24 @@ window.onload = function(){
         console.log('api-get-bookings does not work')
     });
 
-    return false
+    $.ajax({
+        method:'GET',
+        url:'apis/api-get-requests.php',
+        data: {
+            'sUserEmail': window.sUserEmail
+        },
+        dataType:'JSON'
+    }).done(function(jData){
+        
+        if(jData.status == 1){
+            // console.log(jData.message)
+            $('#booking-requests').append($(jData.message));
+        }
+    }).fail(function(){
+        console.log('api-get-requests does not work')
+    });
+
+    
 }   
 
 $('#pending, #archived, #upcoming').click(function(){
@@ -82,7 +98,7 @@ $('#pending, #archived, #upcoming').click(function(){
             console.log('api-get-bookings does not work')
         });
 
-        return false
+       
 
 
     }
@@ -92,3 +108,8 @@ $('#pending, #archived, #upcoming').click(function(){
 
     
 })
+
+
+$("body").on("click", ".accept-btn", function(){
+    console.log(this.dataset.bookingid)
+  });
