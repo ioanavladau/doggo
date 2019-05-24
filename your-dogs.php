@@ -15,19 +15,19 @@
     <h1>Your pets</h1>
 
     <div>
-      <form id="frmAddDog" action="apis/api-set-dog.php" method="post" enctype="multipart/form-data">
+      <form id="frmAddDog" method="post" action="apis/api-set-dog.php" enctype="multipart/form-data">
         <label for="txtsDogName">Name</label>
-        <input type="text" name="txtsDogName" id="txtsDogName"><br>
+        <input type="text" name="txtsDogName" id="txtsDogName" value="placeholder value"><br>
 
         <label for="txtiDogWeight">Weight (kg)</label>
-        <input type="text" name="txtiDogWeight" id="txtiDogWeight"><br>
+        <input type="text" name="txtiDogWeight" id="txtiDogWeight" value="placeholder value"><br>
         <!-- <label for="txtsDogBreed">Breed<br> Write all breeds that apply. If your dog is a mixed breed, add 'mixed' in your description.</label>
         <input type="text" name="txtsDogBreed" id="txtBreed"><br> -->
         <label for="txtiDogYears">Age (years)</label>
-        <input type="number" name="txtiDogYears" id="txtiDogYears"><br>
+        <input type="number" name="txtiDogYears" id="txtiDogYears" value="11"><br>
         
         <label for="txtiDogMonths">Age (months)</label>
-        <input type="number" name="txtiDogMonths" id="txtiDogMonths"><br>
+        <input type="number" name="txtiDogMonths" id="txtiDogMonths" value="11"><br>
 
         <label for="rbDogGender">Gender</label>
         <input type="radio" name="rbDogGender" value="female" class="radio" <?php if (isset($_POST['rbDogGender']) && $_POST['rbDogGender'] == 'female'): ?>checked='checked'<?php endif; ?> /> Female
@@ -51,6 +51,9 @@
             }
           ?>
         </select><br>
+
+        <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()">
+        <img id="dog-image-preview" class="small-photo">
 
         <label for="rbDogSpayedNeutered">Spayed/Neutered</label>
         <input type="radio" name="rbDogSpayedNeutered" value="yes" class="radio" <?php if (isset($_POST['rbDogSpayedNeutered']) && $_POST['rbDogSpayedNeutered'] == 'Yes'): ?>checked='checked'<?php endif; ?> /> Yes

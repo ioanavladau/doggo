@@ -342,4 +342,14 @@ h2 {
   .grid-container div img {
     width: 100%; }
 
+.preview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  margin: 0 auto;
+  background: white; }
+
+.preview img {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */
