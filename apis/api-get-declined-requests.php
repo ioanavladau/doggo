@@ -11,7 +11,7 @@ $stmtone = $db->prepare( 'SELECT bookings.id AS booking_id, bookings.user_fk, bo
 INNER JOIN users ON users.id = bookings.dog_sitter_fk 
 INNER JOIN dogs ON dogs.id = bookings.dog_fk 
 INNER JOIN breeds ON breeds.id = dogs.breed_fk 
-WHERE bookings.dog_sitter_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = 0 ORDER BY bookings.booking_date ASC' );
+WHERE bookings.dog_sitter_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = -1 ORDER BY bookings.booking_date ASC' );
 $stmtone->bindValue(':sUserEmail', $sUserEmail);
 $stmtone->execute();
 $aRows = $stmtone->fetchAll();
@@ -28,13 +28,13 @@ foreach( $aRows as $aRow ){
     }
     $sDateNormalized =  date("d/m/Y", substr($aRow->booking_date, 0, 10));
     // $sOneResult = "<tr><td>".$sDateNormalized."</td><td>".$sTimeIntervalString."</td><td>".$aRow->message."</td><td>".$aRow->dog_name.", ".$aRow->breed_name."</td></tr>";
-    $sOneResult = "<div class='request-card'><div class='request-info'><img src='images/maya.jpg' alt=''><div class='request-text'><h5>Dog walking for ".$aRow->dog_name.", ".$aRow->breed_name."</h5><span class='request-date'>".$sDateNormalized."</span><span class='request-time'>".$sTimeIntervalString."</span><div class='request-message'>“".$aRow->message."”</div><span class='request-owner'>- ".$aRow->owner_first_name." ".$aRow->owner_last_name."</span></div></div><div class='accept-decline-buttons'><button data-bookingid='".$aRow->booking_id."' class='yellow-btn accept-btn'>Accept request</button><button data-bookingid='".$aRow->booking_id."' class='red-btn decline-btn'>Decline request</button></div></div>";
+    $sOneResult = "<div class='request-card'><div class='request-info declined-request'><img src='images/maya.jpg' alt=''><div class='request-text'><h5>Dog walking for ".$aRow->dog_name.", ".$aRow->breed_name."</h5><span class='request-date'>".$sDateNormalized."</span><span class='request-time'>".$sTimeIntervalString."</span><div class='request-message'>“".$aRow->message."”</div><span class='request-owner'>- ".$aRow->owner_first_name." ".$aRow->owner_last_name."</span></div></div></div>";
     $aAllResults[] = $sOneResult;
 }
 
 $sAllResultsString = join(" ",$aAllResults);
 if($aRows==[]){
-    $sAllResultsString = "<div class='no-requests'>No pending requests yet</div>";
+    $sAllResultsString = "<div class='no-requests'>No declined requests yet</div>";
 }
 sendResponse(1, __LINE__, $sAllResultsString);
 

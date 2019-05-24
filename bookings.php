@@ -33,10 +33,32 @@
 
     <div class="card card-with-a-title width-100 booking-request <?= $sClassHide ?? '' ?>">
         <div class="card-title">
-            Booking requests
+            Pending booking requests
         </div>
 
         <div id="booking-requests">
+        </div>
+
+    </div>
+
+    <div class="card card-with-a-title width-100 booking-request accepted-booking-request <?= $sClassHide ?? '' ?>">
+        <div class="card-title">
+            Accepted booking requests
+        </div>
+
+        <div id="accepted-booking-requests">
+
+
+        </div>
+
+    </div>
+
+    <div class="card card-with-a-title width-100 booking-request accepted-booking-request <?= $sClassHide ?? '' ?>">
+        <div class="card-title">
+            Declined booking requests
+        </div>
+
+        <div id="declined-booking-requests">
         </div>
 
     </div>
@@ -54,55 +76,25 @@
                 <li class="" id="archived"><a href="#tab-3">Archived</a></li>
             </ul>
             <div class="tab-content">
-                <div id="tab-1" class="tab-pane active"> 
-                    
-                    <table id="booking-row" class="booking-table">
-                        <thead>
-                            <tr>
-                                <th class="sitter">Dog sitter</th>
-                                <th class="pet">Your pet</th>
-                                <th class="date">Date</th>
-                                <th class="time-range">Time range</th>
-                                <th class="message">Message</th>
-                                <th class="status">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
+                
+                <div id="tab-1" class="tab-pane active">
+                    <div id="booking-row">
 
-                    </table>
-                </div> 
+                    </div>
+                </div>
+
                 <div id="tab-2" class="tab-pane">
-                    <table id="booking-row-two" class="booking-table">
-                        <thead>
-                            <tr>
-                                <th class="sitter">Dog sitter</th>
-                                <th class="pet">Your pet</th>
-                                <th class="date">Date</th>
-                                <th class="time-range">Time range</th>
-                                <th class="message">Message</th>
-                                <th class="status">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-
-                    </table>
+                    <div id="booking-row-two">
+                        
+                    </div>
                 </div>
+
                 <div id="tab-3" class="tab-pane">
-                    <table id="booking-row-three" class="booking-table">
-                        <thead>
-                            <tr>
-                                <th class="sitter">Dog sitter</th>
-                                <th class="pet">Your pet</th>
-                                <th class="date">Date</th>
-                                <th class="time-range">Time range</th>
-                                <th class="message">Message</th>
-                                <th class="status">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-
-                    </table>
+                    <div id="booking-row-three">
+                        
+                    </div>
                 </div>
+                
             </div>
         </section>
     </div>

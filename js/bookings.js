@@ -48,6 +48,39 @@ window.onload = function(){
         console.log('api-get-requests does not work')
     });
 
+    $.ajax({
+        method:'GET',
+        url:'apis/api-get-accepted-requests.php',
+        data: {
+            'sUserEmail': window.sUserEmail
+        },
+        dataType:'JSON'
+    }).done(function(jData){
+        
+        if(jData.status == 1){
+            // console.log(jData.message)
+            $('#accepted-booking-requests').append($(jData.message));
+        }
+    }).fail(function(){
+        console.log('api-get-accepted-requests does not work')
+    });
+
+    $.ajax({
+        method:'GET',
+        url:'apis/api-get-declined-requests.php',
+        data: {
+            'sUserEmail': window.sUserEmail
+        },
+        dataType:'JSON'
+    }).done(function(jData){
+        
+        if(jData.status == 1){
+            // console.log(jData.message)
+            $('#declined-booking-requests').append($(jData.message));
+        }
+    }).fail(function(){
+        console.log('api-get-declined-requests does not work')
+    });
     
 }   
 
@@ -85,14 +118,14 @@ $('#pending, #archived, #upcoming').click(function(){
         }).done(function(jData){
             console.log(jData)
             if(jData.status == 1){
-                $('#booking-row tbody').empty();
-                $('#booking-row tbody').append(jData.message);
+                $('#booking-row').empty();
+                $('#booking-row').append(jData.message);
             }else if(jData.status == 2){
-                $('#booking-row-two tbody').empty();
-                $('#booking-row-two tbody').append(jData.message);
+                $('#booking-row-two').empty();
+                $('#booking-row-two').append(jData.message);
             }else if(jData.status == 3){
-                $('#booking-row-three tbody').empty();
-                $('#booking-row-three tbody').append(jData.message);
+                $('#booking-row-three').empty();
+                $('#booking-row-three').append(jData.message);
             }
         }).fail(function(){
             console.log('api-get-bookings does not work')
@@ -111,5 +144,48 @@ $('#pending, #archived, #upcoming').click(function(){
 
 
 $("body").on("click", ".accept-btn", function(){
-    console.log(this.dataset.bookingid)
-  });
+let iBookingId = this.dataset.bookingid
+
+$.ajax({
+    method:'GET',
+    url:'apis/api-confirm-booking.php',
+    data: {
+        'iBookingId': iBookingId
+    },
+    dataType:'JSON'
+}).done(function(jData){
+    console.log(jData)
+    if(jData.status == 1){
+        console.log(jData.message)
+        location.reload()
+        // $('#booking-row tbody').empty();
+        // $('#booking-row tbody').append(jData.message);
+    }
+}).fail(function(){
+    console.log('api-confirm-bookings does not work')
+});
+});
+
+
+$("body").on("click", ".decline-btn", function(){
+let iBookingId = this.dataset.bookingid
+
+$.ajax({
+    method:'GET',
+    url:'apis/api-decline-booking.php',
+    data: {
+        'iBookingId': iBookingId
+    },
+    dataType:'JSON'
+}).done(function(jData){
+    console.log(jData)
+    if(jData.status == 1){
+        console.log(jData.message)
+        location.reload()
+        // $('#booking-row tbody').empty();
+        // $('#booking-row tbody').append(jData.message);
+    }
+}).fail(function(){
+    console.log('api-decline-bookings does not work')
+});
+});

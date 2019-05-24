@@ -9,10 +9,10 @@ $sBookingType = $_GET['sBookingType'] ?? '';
 
 
 if($sBookingType=='upcoming'){
-    $stmtone = $db->prepare( 'SELECT bookings.id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, users.first_name, users.last_name, dogs.name from bookings 
+    $stmtone = $db->prepare( 'SELECT bookings.id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, users.first_name, users.last_name, dogs.name AS dog_name, users.profile_photo_url from bookings 
     INNER JOIN users ON users.id = bookings.dog_sitter_fk 
     INNER JOIN dogs ON dogs.id = bookings.dog_fk 
-    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = 1 AND bookings.booking_date >= UNIX_TIMESTAMP() ORDER BY bookings.booking_date ASC' );
+    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = 1 AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) >= UNIX_TIMESTAMP() ORDER BY bookings.booking_date DESC' );
     $stmtone->bindValue(':sUserEmail', $sUserEmail);
     $stmtone->execute();
     $aRows = $stmtone->fetchAll();
@@ -28,21 +28,21 @@ if($sBookingType=='upcoming'){
             $sTimeIntervalString = '15:00-22:00';
         }
         $sDateNormalized =  date("d/m/Y", substr($aRow->booking_date, 0, 10));
-        $sOneResult = "<tr><td>".$aRow->first_name." ".$aRow->last_name."</td><td>".$aRow->name."</td><td>".$sDateNormalized."</td><td>".$sTimeIntervalString."</td><td>".$aRow->message."</td><td>Confirmed</td></tr>";
+        $sOneResult = "<div class='booking-container'><img src='".$aRow->profile_photo_url."' alt=''><div class='booking-name-time'><h5>".$aRow->first_name." ".$aRow->last_name."</h5><div class='booking-date-and-time'><h5 style='color: #474747;'>".$sDateNormalized."</h5><span class='booking-time'>".$sTimeIntervalString."</span></div></div><div class='vertical-divider'></div><h6>Dog walking for ".$aRow->dog_name."</h6><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Message</span><span class='booking-message'>".$aRow->message."</span></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Fare</span><h6>20 kr./walk</h6></div><div class='green-label'>Confirmed</div></div>";
         $aAllResults[] = $sOneResult;
     }
-    $sAllResultsString = join(",",$aAllResults);
+    $sAllResultsString = join(" ",$aAllResults);
     if($aRows==[]){
-        $sAllResultsString = "<tr><td colspan='6' style='color: lightgray;'>No upcoming bookings yet</td></tr>";
+        $sAllResultsString = "<div style='color: lightgray;'>No upcoming bookings yet</div>";
     }
     sendResponse(1, __LINE__, $sAllResultsString);
 
 }else if($sBookingType=='pending'){
     
-    $stmtone = $db->prepare( 'SELECT bookings.id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, users.first_name, users.last_name, dogs.name from bookings 
+    $stmtone = $db->prepare( 'SELECT bookings.id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, users.first_name, users.last_name, dogs.name AS dog_name, users.profile_photo_url from bookings 
     INNER JOIN users ON users.id = bookings.dog_sitter_fk 
     INNER JOIN dogs ON dogs.id = bookings.dog_fk 
-    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = 0 AND bookings.booking_date >= UNIX_TIMESTAMP() ORDER BY bookings.booking_date ASC' );
+    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = 0 AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) >= UNIX_TIMESTAMP() ORDER BY bookings.booking_date DESC' );
     $stmtone->bindValue(':sUserEmail', $sUserEmail);
     $stmtone->execute();
     $aRows = $stmtone->fetchAll();
@@ -58,20 +58,21 @@ if($sBookingType=='upcoming'){
             $sTimeIntervalString = '15:00-22:00';
         }
         $sDateNormalized =  date("d/m/Y", substr($aRow->booking_date, 0, 10));
-        $sOneResult = "<tr><td>".$aRow->first_name." ".$aRow->last_name."</td><td>".$aRow->name."</td><td>".$sDateNormalized."</td><td>".$sTimeIntervalString."</td><td>".$aRow->message."</td><td>Not confirmed</td></tr>";
+        $sOneResult = "<div class='booking-container'><img src='".$aRow->profile_photo_url."' alt=''><div class='booking-name-time'><h5>".$aRow->first_name." ".$aRow->last_name."</h5><div class='booking-date-and-time'><h5 style='color: #474747'>".$sDateNormalized."</h5><span class='booking-time'>".$sTimeIntervalString."</span></div></div><div class='vertical-divider'></div><h6>Dog walking for ".$aRow->dog_name."</h6><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Message</span><span class='booking-message'>".$aRow->message."</span></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Fare</span><h6>20 kr./walk</h6></div><div class='gray-label'>Not confirmed</div></div>";
         $aAllResults[] = $sOneResult;
     }
-    $sAllResultsString = join(",",$aAllResults);
+    $sAllResultsString = join(" ",$aAllResults);
     if($aRows==[]){
-        $sAllResultsString = "<tr><td colspan='6' style='color: lightgray;'>No pending bookings yet</td></tr>";
+        $sAllResultsString = "<div style='color: lightgray;'>No pending bookings yet</div>";
     }
     sendResponse(2, __LINE__, $sAllResultsString);
+
 }else if($sBookingType=='archived'){
     
-    $stmtone = $db->prepare( 'SELECT bookings.id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, users.first_name, users.last_name, dogs.name from bookings 
+    $stmtone = $db->prepare( 'SELECT bookings.id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, users.first_name, users.last_name, dogs.name AS dog_name, users.profile_photo_url from bookings 
     INNER JOIN users ON users.id = bookings.dog_sitter_fk 
     INNER JOIN dogs ON dogs.id = bookings.dog_fk 
-    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.booking_date <= UNIX_TIMESTAMP() ORDER BY bookings.booking_date ASC' );
+    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) <= UNIX_TIMESTAMP() ORDER BY bookings.booking_date DESC' );
     $stmtone->bindValue(':sUserEmail', $sUserEmail);
     $stmtone->execute();
     $aRows = $stmtone->fetchAll();
@@ -87,18 +88,23 @@ if($sBookingType=='upcoming'){
             $sTimeIntervalString = '15:00-22:00';
         }
         if($aRow->is_confirmed == 1){
+            $sStatusClass = 'green-label';
             $sStatus = 'Confirmed';
-        }else{
+        }else if($aRow->is_confirmed == 0){
+            $sStatusClass = 'gray-label';
             $sStatus = 'Not confirmed';
+        }else if($aRow->is_confirmed == -1){
+            $sStatusClass = 'red-label';
+            $sStatus = 'Declined';
         }
         $sDateNormalized =  date("d/m/Y", substr($aRow->booking_date, 0, 10));
-        $sOneResult = "<tr><td>".$aRow->first_name." ".$aRow->last_name."</td><td>".$aRow->name."</td><td>".$sDateNormalized."</td><td>".$sTimeIntervalString."</td><td>".$aRow->message."</td><td>".$sStatus."</td></tr>";
+        $sOneResult = "<div class='booking-container'><img src='".$aRow->profile_photo_url."' alt=''><div class='booking-name-time'><h5>".$aRow->first_name." ".$aRow->last_name."</h5><div class='booking-date-and-time'><h5 style='color: #474747'>".$sDateNormalized."</h5><span class='booking-time'>".$sTimeIntervalString."</span></div></div><div class='vertical-divider'></div><h6>Dog walking for ".$aRow->dog_name."</h6><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Message</span><span class='booking-message'>".$aRow->message."</span></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Fare</span><h6>20 kr./walk</h6></div><div class='".$sStatusClass."'>".$sStatus."</div></div>";
         $aAllResults[] = $sOneResult;
     }
-    $sAllResultsString = join(",",$aAllResults);
+    $sAllResultsString = join(" ",$aAllResults);
 
     if($aRows==[]){
-        $sAllResultsString = "<tr><td colspan='6' style='color: lightgray;'>No archived bookings yet</td></tr>";
+        $sAllResultsString = "<div style='color: lightgray;'>No archived bookings yet</div>";
     }
 
     sendResponse(3, __LINE__, $sAllResultsString);
