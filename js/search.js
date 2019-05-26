@@ -34,7 +34,7 @@ $('#searchForDate').click(function(){
         
     $.ajax({
         method:'GET',
-        url:'apis/api-get-dogitters-with-the-date.php',
+        url:'apis/api-get-dogsitters-with-the-date.php',
         data: {
             'sSearchDate': sTimestampSearchDate,
             'sSearchTimeInterval': sSelectedTime,
