@@ -12,6 +12,7 @@ let sTimestampEndDate
 //     }
 // });
 
+
 $(function() {
 $('input[name="daterange"]').daterangepicker({
     opens: 'left',
@@ -27,6 +28,8 @@ $('input[name="daterange"]').daterangepicker({
     console.log('Start date in seconds: '+sTimestampStartDate)
     console.log('End date in seconds: '+sTimestampEndDate)
 });
+
+
 });
 
 
@@ -83,7 +86,7 @@ $('#add-availability').click(function(){
 // window.onload = function(){
 //     $('button.fc-next-button').addClass('red')
 // }
-window.onload = function(){
+$(document).ready(function(){
     $.ajax({
         method:'GET',
         url:'apis/api-get-available-dates.php',
@@ -96,45 +99,38 @@ window.onload = function(){
         if(jData.status == 1){
             let aAvailableDates = jData.message.split(',');
             console.log(aAvailableDates)
-
-            // if ($('.fc-day').dataset.date == "2019-05-19"){
-            //     console.log('hiya')
-            // }else{
-            //     console.log('byeya')
-            // }
-            // availableDate = 2019-05-20
-            // let foundelement = $("tr").find("td[data-date='" + availableDate +"']")
-            //     foundelement.addClass('red')
-
             aAvailableDates.forEach(function(availableDate){
                 console.log(availableDate)
                 let foundelement = $("tr").find("td[data-date='" + availableDate +"']")
                 foundelement.addClass('green-date')
-                
-                // let targetTd = $('.fc-day').data("date", "2019-05-19")
-                // targetTd.addClass('red')
-
               });
-            // swal({
-            //     title: 'Available period added',
-            //     // text: 'You can login now',
-            //     icon: 'success',
-            // });
-            // $('#frmSignup')[0].reset()
-            // console.log(jData.message)
         }else{
-            // swal({
-            //     title: 'Can't sign you up!',
-            //     text: jData.message,
-            //     icon: 'warning',
-            // });
         }
     }).fail(function(){
         console.log('api-get-available-dates does not work')
     });
 
-    return false
-}   
+$.ajax({
+    method:'GET',
+    url:'apis/api-get-dog.php',
+    dataType:'JSON'
+}).done(function(jData){
+    console.log(jData)
+    if(jData.status == 1){
+        console.log(jData)
+        $("#myDog").append(jData.message);
+        if(jData.showAddDogContainer == 1){
+            $("#add-a-dog-container").addClass('hide');
+        }
+    }else{
+        console.log("cannot display doggo")
+    }
+}).fail(function(){
+    console.log('API get dogs does not work')
+});
+})
+
+  
 // $('button.fc-next-button').click(function(){
 //     availableDate = '2019-06-20'
 //     let foundelement = $("tr").find("td[data-date='" + availableDate +"']")
