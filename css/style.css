@@ -4,7 +4,7 @@ html, body {
 
 body {
   font-family: "Lato", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -50,7 +50,7 @@ footer {
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: 13px;
   margin-top: 10px; }
 
 .logo {
@@ -97,7 +97,7 @@ input, textarea {
   padding: 0 10px;
   border-style: none;
   border: 1px solid #e0e0e0;
-  font-size: 14px;
+  font-size: 15px;
   font-family: "Lato", sans-serif; }
 
 textarea {
@@ -118,7 +118,7 @@ textarea {
   height: 45px;
   border-style: none;
   font-family: "Rubik", sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 400; }
@@ -198,7 +198,7 @@ h2 {
   font-weight: normal; }
 
 .address {
-  font-size: 13px; }
+  font-size: 14px; }
 
 .about-photo img {
   height: 170px;
@@ -258,7 +258,7 @@ h2 {
   width: 100%;
   text-align: center;
   padding: 20px 0;
-  font-size: 16px; }
+  font-size: 17px; }
 
 .card-with-a-title {
   padding: 0 40px 40px 40px; }
@@ -273,7 +273,7 @@ h2 {
   text-transform: uppercase;
   font-family: "Rubik", sans-serif;
   color: #66727c;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center; }
 
@@ -437,7 +437,7 @@ h2 {
 h5, .request-time {
   color: #66727c;
   font-family: "Rubik", sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   text-transform: uppercase;
   margin: 0; }
@@ -447,12 +447,12 @@ h5, .request-time {
 
 .request-date {
   font-family: "Rubik", sans-serif;
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 400; }
 
 .request-message, .owner-info {
   font-family: "Lato", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   background-color: #f0f2f2;
   padding: 15px;
   border-radius: 10px;
@@ -462,7 +462,7 @@ h5, .request-time {
 .request-owner {
   color: #a5a6a5;
   font-family: "Lato", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   float: right; }
 
 .accept-decline-buttons {
@@ -472,9 +472,10 @@ h5, .request-time {
   .accept-decline-buttons .yellow-btn, .accept-decline-buttons .red-btn {
     width: 170px;
     height: 40px;
-    font-size: 14px; }
-  .accept-decline-buttons .red-btn {
-    background-color: #d6472b; }
+    font-size: 15px; }
+
+.red-btn {
+  background-color: #d6472b; }
 
 .request-card {
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
@@ -506,14 +507,14 @@ h5, .request-time {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   font-family: "Rubik", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
   text-transform: uppercase;
   grid-row-gap: 20px;
   width: 80%; }
 
 h6 {
-  font-size: 11px;
+  font-size: 12px;
   color: #9b9b9b;
   font-weight: 400;
   text-transform: uppercase;
@@ -528,7 +529,7 @@ h6 {
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -544,9 +545,12 @@ h6 {
   .booking-container h6 {
     color: black !important;
     font-weight: 500; }
+  .booking-container .red-btn {
+    width: 140px;
+    font-size: 13px; }
 
 .booking-time {
-  font-size: 10px;
+  font-size: 11px;
   color: #878787;
   font-family: "Rubik", sans-serif;
   margin-left: 5px; }
@@ -554,7 +558,8 @@ h6 {
 .booking-date-and-time {
   display: flex;
   align-items: flex-end;
-  margin-top: 3px; }
+  margin-top: 5px;
+  margin-bottom: 5px; }
   .booking-date-and-time h5 {
     font-weight: 400 !important; }
 
@@ -564,7 +569,7 @@ h6 {
   background-color: #d6d6d6; }
 
 .booking-message {
-  font-size: 13px; }
+  font-size: 14px; }
 
 .message-block {
   display: flex;
@@ -580,9 +585,12 @@ h6 {
   background-color: #93cc25;
   padding: 5px 7px;
   font-family: "Rubik", sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
-  color: white; }
+  color: white;
+  width: 75%;
+  text-align: center;
+  margin-top: 5px; }
 
 .red-label {
   background-color: #bc3c4f !important; }

@@ -16,7 +16,7 @@ $aRows = $stmtone->fetchAll();
 
 foreach( $aRows as $aRow ){
     $sUserId = $aRow->id;
-    $stmt = $db->prepare( 'INSERT INTO dog_sitters_availability VALUES(null, :sUserId, :sStartDate, :sEndDate, :sTimeInterval)' );
+    $stmt = $db->prepare( 'INSERT INTO dog_sitters_availability(id, user_fk, start_date, end_date, time_interval) VALUES(null, :sUserId, :sStartDate, :sEndDate, :sTimeInterval)' );
     $stmt->bindValue(':sStartDate', $sStartDate);
     $stmt->bindValue(':sEndDate', $sEndDate);
     $stmt->bindValue(':sTimeInterval', $sTimeInterval);

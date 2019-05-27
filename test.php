@@ -26,6 +26,11 @@ foreach($array as $item){
     echo $item.", ";
 }
 
+$strToTimeResult = strtotime("10.05.2019 12:00:00 ");
+
+echo $strToTimeResult*1000;
+
+
 ?> 
 
 <!DOCTYPE html>

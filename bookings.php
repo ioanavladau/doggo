@@ -69,6 +69,7 @@
         </div>
 
         <div class="container--tabs">
+        
         <section class="row-tabs">
             <ul class="nav nav-tabs">
                 <li class="active" id="upcoming"><a href="#tab-1">Upcoming</a></li>

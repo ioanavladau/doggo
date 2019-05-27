@@ -31,6 +31,8 @@ $('.available-time').click(function(){
 $('#searchForDate').click(function(){
     let dogSitterResults = document.querySelector("#dogSitterResults")
     dogSitterResults.innerHTML = ""
+    sSearchDate = sSearchDate+' 12:00:00'
+    sTimestampSearchDate = (new Date(sSearchDate)).getTime()
         
     $.ajax({
         method:'GET',
