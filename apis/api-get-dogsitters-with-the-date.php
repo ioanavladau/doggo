@@ -8,11 +8,13 @@ $sSearchDate = $_GET['sSearchDate'] ?? '';
 $sSearchTimeInterval = $_GET['sSearchTimeInterval'] ?? '';
 $sUserEmail = $_GET['sUserEmail'] ?? '';
 
+// $sSearchDate = $sSearchDate
+
 $stmt = $db->prepare( 'SELECT users.id, users.first_name, users.last_name, users.email, users.profile_photo_url, users.address, dog_sitters.about
 FROM users INNER JOIN dog_sitters ON users.id = dog_sitters.user_fk
 WHERE NOT users.email = :sUserEmail AND users.is_dog_sitter=1 AND users.id IN (SELECT user_fk 
               FROM dog_sitters_availability
-             WHERE time_interval = :sSearchTimeInterval AND :sSearchDate BETWEEN start_date AND end_date)' );
+             WHERE time_interval = :sSearchTimeInterval AND is_available=1 AND :sSearchDate BETWEEN start_date AND end_date)' );
 
 
 $stmt->bindValue(':sSearchDate', $sSearchDate);

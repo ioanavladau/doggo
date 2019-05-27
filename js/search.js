@@ -24,6 +24,7 @@ $('.available-time').click(function(){
     console.log(sSelectedTime)
     $('.available-time').removeClass('time-active')
     $(this).addClass('time-active')
+    sSearchDate = sSearchDate.substr(0,10)
 });
 
 
@@ -31,6 +32,11 @@ $('.available-time').click(function(){
 $('#searchForDate').click(function(){
     let dogSitterResults = document.querySelector("#dogSitterResults")
     dogSitterResults.innerHTML = ""
+    sSearchDate = sSearchDate+' 12:00:00'
+    sTimestampSearchDate = (new Date(sSearchDate)).getTime()
+
+    console.log(sSearchDate)
+    console.log(sSelectedTime)
         
     $.ajax({
         method:'GET',

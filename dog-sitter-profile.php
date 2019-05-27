@@ -42,7 +42,7 @@
         $sFare = $aRow->fare;
         $sAbout = $aRow->about;
     }
-
+    
     $sDateNormalized =  date("d/m/Y", substr($sSearchDate, 0, 10));
     if($sSearchTimeInterval=='morning'){
         $sTimePeriod = '06:00-11:00';
@@ -51,8 +51,11 @@
     }else if($sSearchTimeInterval=='evening'){
         $sTimePeriod = '15:00-22:00';
     }
+
+
     
 
+    
 ?>
 
 <div class="container">   
@@ -64,8 +67,14 @@
             </div>
 
             <div class="services">
-                <span>Dog walking</span>
-                <span>DKK <?= $sFare ?></span>
+                <h4>SERVICES</h4>
+                <div class="row">
+                    <div>
+                        <span>Dog walking</span>
+                        <h6>An hour long walk with your dog</h6>
+                    </div>
+                    <span class="fare-price"><?= $sFare ?> Kr./Walk</span>
+                </div>
             </div>
 
             <div class="availability-calendar">
@@ -77,7 +86,36 @@
             <div class="about-text">
                 <h1><?= $sFullName ?></h1>
                 <p><?= $sAbout ?></p>
-                <button class="yellow-btn" id="contact-dog-sitter" onclick="location.href='book-dogsitter.php?sDogSitterId=<?= $sDogSitterId ?>&sSearchDate=<?= $sSearchDate ?>&sSearchTimeInterval=<?= $sSearchTimeInterval ?>';">Contact <?= $sFirstName ?> for <?= $sDateNormalized ?>, <?= $sTimePeriod ?></button>
+                <button class="yellow-btn contact-btn" id="contact-dog-sitter" onclick="location.href='book-dogsitter.php?sDogSitterId=<?= $sDogSitterId ?>&sSearchDate=<?= $sSearchDate ?>&sSearchTimeInterval=<?= $sSearchTimeInterval ?>';">Contact <?= $sFirstName ?> for <?= $sDateNormalized ?></button>
+            </div>
+
+            <div class="dog-sitter-photos-container">
+
+                <?php
+                    
+                    $stmtthree = $db->prepare( 'SELECT url FROM dog_sitters_photos WHERE user_fk = :sDogSitterId' );
+                    $stmtthree->bindValue(':sDogSitterId', $sDogSitterId);
+                    $stmtthree->execute();
+                    $aRowsThree = $stmtthree->fetchAll();
+
+                    foreach( $aRowsThree as $aRow ){
+                        echo "<div><img class='main-photo' src='images/dog-photo/$aRow->url' alt=''></div>";
+                    }
+                ?>
+
+                
+                <!-- <div>
+                    <img class="regular-photo" src="images/dog-photo/elizabeth.jpg" alt="">
+                </div>
+                <div>
+                    <img class="regular-photo" src="images/dog-photo/sunny.jpg" alt="">
+                </div>    
+                <div>
+                    <img class="regular-photo" src="images/dog-photo/elizabeth.jpg" alt="">
+                </div>
+                <div>
+                    <img class="regular-photo" src="images/dog-photo/sunny.jpg" alt="">
+                </div> -->
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ require_once '../connect.php';
 
 $sUserEmail = $_GET['sUserEmail'] ?? '';
 
-$stmtone = $db->prepare( 'SELECT start_date, end_date FROM dog_sitters_availability INNER JOIN users ON users.id = dog_sitters_availability.user_fk WHERE users.email = :sUserEmail' );
+$stmtone = $db->prepare( 'SELECT start_date, end_date FROM dog_sitters_availability INNER JOIN users ON users.id = dog_sitters_availability.user_fk WHERE users.email = :sUserEmail AND is_available=1' );
 $stmtone->bindValue(':sUserEmail', $sUserEmail);
 $stmtone->execute();
 $aRows = $stmtone->fetchAll();

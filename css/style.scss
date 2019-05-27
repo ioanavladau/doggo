@@ -11,7 +11,7 @@ html, body{
 }
 body{
     font-family: $Lato;
-    font-size: 14px;
+    font-size: 15px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -62,7 +62,7 @@ footer{
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 10px;
 }
 .logo{
@@ -87,7 +87,7 @@ footer{
     background-color: white;
     width: 40vw;
     padding: 40px;
-    margin: 10vh 0;
+    // margin: 10vh 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,7 +111,7 @@ input, textarea{
     padding: 0 10px;
     border-style: none;
     border: 1px solid $bordercolor;
-    font-size: 14px;
+    font-size: 15px;
     font-family: $Lato;
 }
 textarea{
@@ -123,17 +123,20 @@ textarea{
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    margin: 10vh 7%;
 }
-.yellow-btn{
+.yellow-btn, .red-btn{
     background-color: #f5ab25;
     display: block;
     color: white;
     width: 100%;
-    height: 50px;
+    height: 45px;
     border-style: none;
     font-family: $Rubik;
     font-size: 17px;
     cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 400;   
 }
 .login-links{
     display: flex;
@@ -212,14 +215,21 @@ h2{
     font-weight: normal;
 }
 .address{
-    font-size: 13px;
+    font-size: 14px;
 }
-.about-photo img{
-    height: 170px;
-    border-radius: 50%;
+.about-photo{ 
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    img{
+        height: 170px;
+        width: 170px;
+        border-radius: 50%;
+    }
 }
 .about-text{
     margin-left: 30px;
+    margin-top: 40px;
 }
 .about-header{
     display: flex;
@@ -239,6 +249,7 @@ h2{
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+    margin: 10vh 7%;
     .card{
         width: auto;
     }
@@ -273,7 +284,7 @@ h2{
     width: 100%;
     text-align: center;
     padding: 20px 0;
-    font-size: 16px;
+    font-size: 17px;
 }
 .card-with-a-title{
     padding: 0 40px 40px 40px;
@@ -290,7 +301,7 @@ h2{
     text-transform: uppercase;
     font-family: $Rubik;
     color: $grayish;
-    font-size: 12px;
+    font-size: 13px;
     display: flex;
     align-items: center;
 }
@@ -308,6 +319,7 @@ h2{
 }
 .width-100{
     width: 100%;
+    box-sizing: border-box;
 }
 .margin-top-30{
     margin-top: 30px;
@@ -352,11 +364,13 @@ h2{
 }
 .dog-sitter-profile{
     display: flex;
+    margin: 20px 0 80px 0;
     .left-column{
         flex: 1;
     }
     .right-column{
         flex: 2;
+        margin-left: 30px;
     }
 }
 #booking-message{
@@ -368,9 +382,503 @@ h2{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: ". . . ." ". . . ." ". . . .";
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
     div{
         img{
             width: 100%;
         }
     }
   }
+
+  .container--tabs {
+    margin: 2rem;
+    width: 100%;
+    
+
+	.nav-tabs {
+		float: left;
+		width: 100%;
+		margin: 0;
+		list-style-type: none;
+        padding-inline-start: 0;
+        
+		> li {
+			float: left;
+			// margin-bottom: -1px;
+
+			> a {
+				float: left;
+				margin-right: 30px;
+				// line-height: 1.42857143;
+				padding: 10px;
+                border: 3px solid transparent;
+                box-sizing: border-box;
+                font-family: $Rubik;
+                color: $grayish;
+                text-transform: uppercase;
+
+				&:hover {
+                    border-color: $yellowprimary;
+                    color: $yellowprimary;
+                    transition: border-color .5s ease;
+				}
+			}
+
+			&.active {
+				> a,
+				> a:hover,
+				> a:focus {
+                    color: $yellowprimary;
+                    text-transform: uppercase;
+                    font-family: $Rubik;
+					cursor: default;
+					background-color: #fff;
+                    border: 3px solid $yellowprimary;
+                    
+				}
+			}
+		}
+	}
+
+	.tab-content {
+		float: left;
+        width: 100%;
+        
+
+		> .tab-pane {
+            display: none;
+                    
+
+			&.active {
+				display: block;
+                padding: 2.5% 1.5%;
+                
+                
+                
+			}
+		}
+
+		> .active {
+            display: block;
+            
+		}
+	}
+
+}
+.booking-table thead, .request-table thead{
+    text-align: left;
+    text-transform: uppercase;
+    font-family: $Rubik !important;    
+    .sitter{
+        width: 13vw;
+    }
+    .pet{
+        width: 10vw;
+    }
+    .date{
+        width: 11vw;
+    }
+    .time-range{
+        width: 10vw;
+    }
+    .message{
+        width: 21vw;
+    }
+}
+.booking-table, .request-table {
+    width: 100%;
+}
+.booking-table tr, .request-table tr{
+    height: 40px;
+    border-top: 1px solid gray;
+}
+.small-photo, .photo img{
+    border-radius: 50%;
+}
+.flex-column{
+    flex-direction: column;
+}
+#booking-requests, #accepted-booking-requests, #declined-booking-requests{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+.request-info{
+    display: flex;
+    img{
+        height: 130px;
+        width: 130px;
+        border-radius: 50%;
+    }
+    align-items: center;
+    margin-bottom: 20px;
+    h5{
+        margin-bottom: 10px;
+    }
+}
+h5, .request-time{
+    color: $grayish;
+    font-family: $Rubik;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0;
+}
+.request-time{
+    margin-left: 10px;
+}
+.request-date{
+    font-family: $Rubik;
+    font-size: 26px;
+    font-weight: 400;
+}
+.request-message, .owner-info{
+    font-family: $Lato;
+    font-size: 14px;
+    background-color: #f0f2f2;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0 5px 0;
+    line-height: 1.7em;
+}
+.request-owner{
+    color: #a5a6a5;
+    font-family: $Lato;
+    font-size: 14px;
+    float: right;
+}
+.accept-decline-buttons{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    .yellow-btn, .red-btn{
+        width: 170px;
+        height: 40px;
+        font-size: 15px;
+    }
+}
+.red-btn{
+    background-color: #d6472b;
+}
+.request-card{
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35vw;
+    margin: 30px auto 0 auto;
+}
+.request-text{
+    margin-left: 25px;
+}
+
+.accepted-booking-request, .declined-booking-request{
+    margin-top: 10px;
+}
+.declined-request{
+    opacity: .4;
+    margin-bottom: 0; 
+}
+.owner-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    font-family: $Rubik;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    grid-row-gap: 20px;
+    width: 80%;
+}
+h6{
+    font-size: 12px;
+    color: #9b9b9b;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0;
+}
+.no-requests{
+    color: lightgray;
+    margin-top: 20px;
+}
+.booking-container{
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    img{
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+    }
+    h5{
+        color: black;
+        font-weight: 500;
+    }
+    h6{
+        color: black !important;
+        font-weight: 500;
+    }
+    .red-btn{
+        width: 140px;
+        font-size: 13px;
+    }
+}
+.booking-time{
+    font-size: 11px;
+    color: #878787;
+    font-family: $Rubik;
+    margin-left: 5px;
+    
+}
+.booking-date-and-time{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    h5{
+        font-weight: 400 !important;
+    }
+}
+.vertical-divider{
+    width: 1px;
+    height: 45px;
+    background-color: #d6d6d6;
+}
+.booking-message{
+    font-size: 14px;    
+}
+.message-block{
+    display: flex;
+    flex-direction: column;
+    .booking-time{
+        text-transform: uppercase;
+        margin-left: 0;
+        margin-bottom: 3px;
+    }
+    h6{
+        font-weight: 500;
+    }
+}
+.green-label, .red-label, .gray-label{
+    background-color: #93cc25;
+    padding: 5px 7px;
+    font-family: $Rubik;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: white;
+    width: 75%;
+    text-align: center;
+    margin-top: 5px;
+}
+.red-label{
+    background-color: #bc3c4f !important;
+}
+.gray-label{
+    background-color: #b7b7b7 !important;
+}
+.side-btns{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    button{
+        font-size: 13px;
+        padding: 0 20px;
+        height: 30px;
+        &:first-child{
+            margin-bottom: 10px;
+        }
+    }
+}
+#myDog{
+    margin: 0;
+}
+.booking-requests-all{
+    margin: 0 auto 10vh auto;
+    width: 100%;
+}
+// .inputfile {
+// 	width: 0.1px;
+// 	height: 0.1px;
+// 	opacity: 0;
+// 	overflow: hidden;
+// 	position: absolute;
+// 	z-index: -1;
+// }
+.upload-photos-btn{
+    border: 1px solid $grayish;
+    font-family: $Rubik;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: $grayish;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 3px;
+}
+#fileToUpload{
+    width: auto;
+}
+#frmUploadProfilePhoto, #frmUploadDogSitterPhotos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.custom-file-input {
+    color: transparent;
+    border: none;
+    height: 46px;
+    width: 137px !important;
+    padding: 0;
+    margin: 5px 0 25px 0;
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Select photos';
+    border: 1px solid $grayish;
+    font-family: $Rubik;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: $grayish;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 3px;
+  }
+  .custom-file-input-one-file::before{
+    content: 'Select a photo' !important;
+  }
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+  .custom-file-input:active {
+    outline: 0;
+  }
+  .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  }
+  .services{
+    background-color: #f3f3f3;
+    padding: 20px 35px 35px 35px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-family: $Rubik;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    h6{
+        text-transform: none;
+    }
+    h4{
+        margin: 0 0 25px 0;
+        font-weight: 500;
+        font-size: 19px;
+    }
+    .row{
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+  
+  .fare-price{
+      font-size: 15px;
+  }
+.contact-btn{
+    width: 24%;
+    height: auto;
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 30px;
+}
+.main-photo {
+    grid-area: mainp;
+}
+.regular-photo {
+    grid-area: photo;
+}
+
+.dog-sitter-photos-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 200px 200px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin: 30px 0 0 30px;
+  }
+.main-photo, .regular-photo{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+#add-a-dog-container{
+    .yellow-btn{
+        padding: 20px;
+        width: auto;
+        height: auto;
+    }
+}
+#frmAddDog{
+    margin-top: 50px;
+    input{
+        margin: 5px 0 5px 0;
+    }
+    .yellow-btn{
+        width: 100%;
+    }
+}
+input[type="radio"]{
+    width: auto;
+}
+.dog-gender{
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    input{
+        margin-right: 10px !important;
+    }
+    span{
+        margin-right: 20px;
+    }
+}
+.dog-photo-container{
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+    input::before{
+        margin-left: 20px;
+    }
+    .custom-file-input{
+        width: 160px !important;
+    }
+    label{
+        margin-top: 10px;
+    }
+}
+select{
+    height: 40px;
+    padding: 0 10px;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    margin: 5px 0 5px 0;
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+}
+#dog-image-preview{
+    background-color: lightgray;
+}

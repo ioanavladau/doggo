@@ -7,7 +7,7 @@ require_once '../connect.php';
 session_start();
 $sUserEmail = $_SESSION['sEmail'];
 
-$stmt = $db->prepare('SELECT dogs.name,dogs.gender,breeds.name AS breed FROM dogs JOIN breeds ON dogs.breed_fk = breeds.id WHERE user_fk=(SELECT id FROM users WHERE email=:sUserEmail)');
+$stmt = $db->prepare('SELECT dogs.name, dogs.gender, dogs.image_url, breeds.name AS breed FROM dogs JOIN breeds ON dogs.breed_fk = breeds.id WHERE user_fk=(SELECT id FROM users WHERE email=:sUserEmail)');
 $stmt->bindValue(':sUserEmail', $sUserEmail);
 $stmt->execute();
 
@@ -19,11 +19,11 @@ if(sizeof($aRows)==1){
 }
 
 foreach($aRows as $aRow){
-  $dog = "<div class='white-card'><div class='about'><h1>$aRow->name</h1><p>Breed: $aRow->breed</p></div></div>";
+  $dog = "<div class='white-card'><div class='photo'><img src='$aRow->image_url'></div><div class='about'><h1>$aRow->name</h1><h5>$aRow->breed</h5></div><div class='side-btns'><button class='yellow-btn' id='edit-dog-btn'>Edit</button><button class='yellow-btn' id='view-dog-btn'>View</button></div></div>";
 }
 
 if($aRows == []){
-  $dog = "<div class='card' id='add-a-dog-container'><a href='your-dogs'>Add a pet</a><div><img src='images/plus.svg' class='small-icon'></div></div>";
+  $dog = "<div class='card' id='add-a-dog-container'><a class='yellow-btn' href='your-dogs'>Add a pet</a><div></div></div>";
 }
 
 
