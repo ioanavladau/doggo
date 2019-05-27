@@ -189,3 +189,32 @@ $.ajax({
     console.log('api-decline-bookings does not work')
 });
 });
+
+
+$("body").on("click", ".cancel-booking", function(event){
+    let iBookingId = this.dataset.bookingid
+    let iBookingdate = this.dataset.bookingdate
+    let iDogsitterfk = this.dataset.dogsitterfk
+       
+    $.ajax({
+        method:'GET',
+        url:'apis/api-delete-booking.php',
+        data: {
+            'iBookingId': iBookingId,
+            'iBookingdate': iBookingdate,
+            'iDogsitterfk': iDogsitterfk
+        },
+        dataType:'JSON'
+    }).done(function(jData){
+        console.log(jData)
+        if(jData.status == 1){
+            console.log(jData.message)
+            location.reload()
+            // $('#booking-row tbody').empty();
+            // $('#booking-row tbody').append(jData.message);
+        }
+    }).fail(function(){
+        console.log('api-delete-booking does not work')
+    })
+    
+})

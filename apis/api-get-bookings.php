@@ -66,7 +66,7 @@ if($sBookingType=='upcoming'){
         }else if($aRow->is_confirmed == 0){
             $sStatusClass = 'gray-label';
             $sStatus = 'Not confirmed';
-            $sCancelBtn = "<div class='vertical-divider'></div><button class='red-btn'>Cancel booking</button>";
+            $sCancelBtn = "<div class='vertical-divider'></div><button data-bookingid='".$aRow->id."' data-bookingdate='".$aRow->booking_date."' data-dogsitterfk='".$aRow->dog_sitter_fk."' type='button' class='red-btn cancel-booking'>Cancel booking</button>";
         }else if($aRow->is_confirmed == -1){
             $sStatusClass = 'red-label';
             $sStatus = 'Declined';
