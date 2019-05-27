@@ -8,13 +8,16 @@
 
     $sHeaderLink = "<script> window.sUserEmail = '$sUserEmail'</script>";
     
+    $sGreyBodyClass = "class='grey-bg'";
     require_once 'top-logged-in.php';
 ?>
 
-<div class="container">
-    <h1>Your pets</h1>
+<div class="container contents-centered">
 
-    <div>
+    <div class="card card-with-a-title ">
+            <div class="card-title">
+            Add your pet
+            </div>
       <form id="frmAddDog" method="post" action="apis/api-set-dog.php" enctype="multipart/form-data">
         <label for="txtsDogName">Name</label>
         <input type="text" name="txtsDogName" id="txtsDogName" value="placeholder value"><br>
@@ -30,10 +33,12 @@
         <input type="number" name="txtiDogMonths" id="txtiDogMonths" value="11"><br>
 
         <label for="rbDogGender">Gender</label>
-        <input type="radio" name="rbDogGender" value="female" class="radio" <?php if (isset($_POST['rbDogGender']) && $_POST['rbDogGender'] == 'female'): ?>checked='checked'<?php endif; ?> /> Female
-        <input type="radio" name="rbDogGender" value="male"  class="radio" <?php if (isset($_POST['rbDogGender']) && $_POST['rbDogGender'] ==  'male'): ?>checked='checked'<?php endif; ?> />  Male <br>
-        
-        <label for="selDogBreed">Breed</label>
+        <div class="dog-gender">
+          <input type="radio" name="rbDogGender" value="female" class="radio" <?php if (isset($_POST['rbDogGender']) && $_POST['rbDogGender'] == 'female'): ?>checked='checked'<?php endif; ?> /> <span>Female</span>
+          <input type="radio" name="rbDogGender" value="male"  class="radio" <?php if (isset($_POST['rbDogGender']) && $_POST['rbDogGender'] ==  'male'): ?>checked='checked'<?php endif; ?> />  Male <br>
+        </div>
+
+        <label for="selDogBreed">Breed</label><br>
         <select name="selDogBreed" id="selDogBreed">
           <?php
             require_once __DIR__.'/connect.php';
@@ -51,22 +56,30 @@
             }
           ?>
         </select><br>
-
-        <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()">
-        <img id="dog-image-preview" class="small-photo">
+        
+        <div class="dog-photo-container">
+          <img id="dog-image-preview" class="small-photo"><br>
+          <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()" class="custom-file-input custom-file-input-one-file">
+        </div>
 
         <label for="rbDogSpayedNeutered">Spayed/Neutered</label>
-        <input type="radio" name="rbDogSpayedNeutered" value="yes" class="radio" <?php if (isset($_POST['rbDogSpayedNeutered']) && $_POST['rbDogSpayedNeutered'] == 'Yes'): ?>checked='checked'<?php endif; ?> /> Yes
-        <input type="radio" name="rbDogSpayedNeutered" value="no"  class="radio" <?php if (isset($_POST['rbDogSpayedNeutered']) && $_POST['rbDogSpayedNeutered'] ==  'No'): ?>checked='checked'<?php endif; ?> /> No <br>
-        
+        <div class="dog-gender">
+          <input type="radio" name="rbDogSpayedNeutered" value="yes" class="radio" <?php if (isset($_POST['rbDogSpayedNeutered']) && $_POST['rbDogSpayedNeutered'] == 'Yes'): ?>checked='checked'<?php endif; ?> /> <span>Yes</span>
+          <input type="radio" name="rbDogSpayedNeutered" value="no"  class="radio" <?php if (isset($_POST['rbDogSpayedNeutered']) && $_POST['rbDogSpayedNeutered'] ==  'No'): ?>checked='checked'<?php endif; ?> /> No <br>
+        </div>
+
         <label for="rbDogMicrochipped">Microchipped</label>
-        <input type="radio" name="rbDogMicrochipped" value="yes" class="radio" <?php if (isset($_POST['rbDogMicrochipped']) && $_POST['rbDogMicrochipped'] == 'Yes'): ?>checked='checked'<?php endif; ?> /> Yes
-        <input type="radio" name="rbDogMicrochipped" value="no"  class="radio" <?php if (isset($_POST['rbDogMicrochipped']) && $_POST['rbDogMicrochipped'] ==  'No'): ?>checked='checked'<?php endif; ?> /> No <br>
-        
+        <div class="dog-gender">
+          <input type="radio" name="rbDogMicrochipped" value="yes" class="radio" <?php if (isset($_POST['rbDogMicrochipped']) && $_POST['rbDogMicrochipped'] == 'Yes'): ?>checked='checked'<?php endif; ?> /> <span>Yes</span>
+          <input type="radio" name="rbDogMicrochipped" value="no"  class="radio" <?php if (isset($_POST['rbDogMicrochipped']) && $_POST['rbDogMicrochipped'] ==  'No'): ?>checked='checked'<?php endif; ?> /> No <br>
+        </div>
+
         <label for="rbDogFriendlyWithOtherDogs">Friendly With Other Dogs</label>
-        <input type="radio" name="rbDogFriendlyWithOtherDogs" value="yes" class="radio" <?php if (isset($_POST['rbDogFriendlyWithOtherDogs']) && $_POST['rbDogFriendlyWithOtherDogs'] == 'Yes'): ?>checked='checked'<?php endif; ?> /> Yes
-        <input type="radio" name="rbDogFriendlyWithOtherDogs" value="no"  class="radio" <?php if (isset($_POST['rbDogFriendlyWithOtherDogs']) && $_POST['rbDogFriendlyWithOtherDogs'] ==  'No'): ?>checked='checked'<?php endif; ?> /> No <br>
-        
+        <div class="dog-gender">
+          <input type="radio" name="rbDogFriendlyWithOtherDogs" value="yes" class="radio" <?php if (isset($_POST['rbDogFriendlyWithOtherDogs']) && $_POST['rbDogFriendlyWithOtherDogs'] == 'Yes'): ?>checked='checked'<?php endif; ?> /> <span>Yes</span>
+          <input type="radio" name="rbDogFriendlyWithOtherDogs" value="no"  class="radio" <?php if (isset($_POST['rbDogFriendlyWithOtherDogs']) && $_POST['rbDogFriendlyWithOtherDogs'] ==  'No'): ?>checked='checked'<?php endif; ?> /> No <br>
+        </div>
+
         <label for="txtsDogSpecialRequirements">Special requirements</label>
         <input type="text" name="txtsDogSpecialRequirements" id="txtsDogSpecialRequirements"><br>
         
@@ -81,7 +94,7 @@
 
 
 
-        <br><input type="submit" value="Add dog" name="submit">
+        <br><input class="yellow-btn" type="submit" value="Add dog" name="submit">
       </form>   
     </div>
 </div>

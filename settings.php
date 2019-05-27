@@ -153,20 +153,21 @@
 
 
 
-<div class="container">
-    <div>
+<div class="container settings-block two-grid">
+    <div class="card">
       <h1>My profile picture</h1>
       <img id="profile-photo-preview" src=<?php echo $sImagePath ?> style="width: 200px; height: 200px;">
       <form id="frmUploadProfilePhoto" action='settings.php' method="post" enctype="multipart/form-data">
-        Select image to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()">
-        <input type="submit" value="Upload Image" name="submit">
+        
+        <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()" class="custom-file-input custom-file-input-one-file">
+        <!-- <label class="upload-photos-btn" for="fileToUpload">Choose a file</label> -->
+        <input class="yellow-btn" type="submit" value="Upload image" name="submit">
       </form>
     </div>
 
     <!-- THIS DIV IS SHOWN ONLY IF THE USER IS A DOGSITTER -->
 
-    <div id="dogsitter-photos-container" class='<?php echo $hideDogSitterUploadPhotosContainer?>'>
+    <div id="dogsitter-photos-container" class='card <?php echo $hideDogSitterUploadPhotosContainer?>'>
       <h1>My dogsitter photos</h1>
       <div class="grid-container">
         <?php
@@ -174,9 +175,8 @@
         ?>
       </div>
       <form id="frmUploadDogSitterPhotos" action='settings.php' method="post" enctype="multipart/form-data">
-        Select dogsitter images to upload:
-        <input type="file" name="dogSitterPhotos[]" id="dogSitterPhoto" multiple>
-        <input type="submit" value="Upload Images" name="submitDogSitterPhotos">
+        <input type="file" name="dogSitterPhotos[]" id="dogSitterPhoto" multiple class="custom-file-input">
+        <input class="yellow-btn" type="submit" value="Upload images" name="submitDogSitterPhotos">
       </form>
     </div>
 

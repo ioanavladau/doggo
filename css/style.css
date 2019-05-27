@@ -75,7 +75,6 @@ footer {
   background-color: white;
   width: 40vw;
   padding: 40px;
-  margin: 10vh 0;
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -108,7 +107,8 @@ textarea {
 .contents-centered {
   display: flex;
   justify-content: center;
-  align-items: flex-start; }
+  align-items: flex-start;
+  margin: 10vh 7%; }
 
 .yellow-btn, .red-btn {
   background-color: #f5ab25;
@@ -200,13 +200,18 @@ h2 {
 .address {
   font-size: 14px; }
 
-.about-photo img {
-  height: 170px;
-  width: 170px;
-  border-radius: 50%; }
+.about-photo {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0; }
+  .about-photo img {
+    height: 170px;
+    width: 170px;
+    border-radius: 50%; }
 
 .about-text {
-  margin-left: 30px; }
+  margin-left: 30px;
+  margin-top: 40px; }
 
 .about-header {
   display: flex;
@@ -224,7 +229,8 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 10px;
-  grid-row-gap: 10px; }
+  grid-row-gap: 10px;
+  margin: 10vh 7%; }
   .two-grid .card {
     width: auto; }
 
@@ -329,11 +335,13 @@ h2 {
   background: #efefef; }
 
 .dog-sitter-profile {
-  display: flex; }
+  display: flex;
+  margin: 20px 0 80px 0; }
   .dog-sitter-profile .left-column {
     flex: 1; }
   .dog-sitter-profile .right-column {
-    flex: 2; }
+    flex: 2;
+    margin-left: 30px; }
 
 #booking-message {
   height: 100px;
@@ -342,7 +350,9 @@ h2 {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas: ". . . ." ". . . ." ". . . ."; }
+  grid-template-areas: ". . . ." ". . . ." ". . . .";
+  grid-column-gap: 10px;
+  grid-row-gap: 10px; }
   .grid-container div img {
     width: 100%; }
 
@@ -492,9 +502,6 @@ h5, .request-time {
 .request-text {
   margin-left: 25px; }
 
-.booking-request {
-  margin: 10vh 0 0 0; }
-
 .accepted-booking-request, .declined-booking-request {
   margin-top: 10px; }
 
@@ -597,5 +604,175 @@ h6 {
 
 .gray-label {
   background-color: #b7b7b7 !important; }
+
+.side-btns {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px; }
+  .side-btns button {
+    font-size: 13px;
+    padding: 0 20px;
+    height: 30px; }
+    .side-btns button:first-child {
+      margin-bottom: 10px; }
+
+#myDog {
+  margin: 0; }
+
+.booking-requests-all {
+  margin: 0 auto 10vh auto;
+  width: 100%; }
+
+.upload-photos-btn {
+  border: 1px solid #66727c;
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #66727c;
+  padding: 15px;
+  display: inline-block;
+  border-radius: 3px; }
+
+#fileToUpload {
+  width: auto; }
+
+#frmUploadProfilePhoto, #frmUploadDogSitterPhotos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; }
+
+.custom-file-input {
+  color: transparent;
+  border: none;
+  height: 46px;
+  width: 137px !important;
+  padding: 0;
+  margin: 5px 0 25px 0; }
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden; }
+
+.custom-file-input::before {
+  content: 'Select photos';
+  border: 1px solid #66727c;
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #66727c;
+  padding: 15px;
+  display: inline-block;
+  border-radius: 3px; }
+
+.custom-file-input-one-file::before {
+  content: 'Select a photo' !important; }
+
+.custom-file-input:hover::before {
+  border-color: black; }
+
+.custom-file-input:active {
+  outline: 0; }
+
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); }
+
+.services {
+  background-color: #f3f3f3;
+  padding: 20px 35px 35px 35px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+  .services h6 {
+    text-transform: none; }
+  .services h4 {
+    margin: 0 0 25px 0;
+    font-weight: 500;
+    font-size: 19px; }
+  .services .row {
+    justify-content: space-between;
+    width: 100%; }
+
+.fare-price {
+  font-size: 15px; }
+
+.contact-btn {
+  width: 24%;
+  height: auto;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 30px; }
+
+.main-photo {
+  grid-area: mainp; }
+
+.regular-photo {
+  grid-area: photo; }
+
+.dog-sitter-photos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 30px 0 0 30px; }
+
+.main-photo, .regular-photo {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center; }
+
+#add-a-dog-container .yellow-btn {
+  padding: 20px;
+  width: auto;
+  height: auto; }
+
+#frmAddDog {
+  margin-top: 50px; }
+  #frmAddDog input {
+    margin: 5px 0 5px 0; }
+  #frmAddDog .yellow-btn {
+    width: 100%; }
+
+input[type="radio"] {
+  width: auto; }
+
+.dog-gender {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px; }
+  .dog-gender input {
+    margin-right: 10px !important; }
+  .dog-gender span {
+    margin-right: 20px; }
+
+.dog-photo-container {
+  display: flex;
+  align-items: center;
+  margin: 30px 0; }
+  .dog-photo-container input::before {
+    margin-left: 20px; }
+  .dog-photo-container .custom-file-input {
+    width: 160px !important; }
+  .dog-photo-container label {
+    margin-top: 10px; }
+
+select {
+  height: 40px;
+  padding: 0 10px;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  margin: 5px 0 5px 0;
+  font-size: 15px;
+  font-family: "Lato", sans-serif; }
+
+#dog-image-preview {
+  background-color: lightgray; }
 
 /*# sourceMappingURL=style.css.map */

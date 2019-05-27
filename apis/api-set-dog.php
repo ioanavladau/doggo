@@ -154,11 +154,15 @@ if ($uploadOk == 0) {
 
           
           $stmt->execute();
+          header("Location: ../profile");
           sendResponse(1, __LINE__, 'dog saved');
+          exit;
           
         }
         else{
+          header("Location: ../profile");
           sendResponse(0, __LINE__, 'error uploading photo');
+          exit;
         }
        
     }

@@ -29,41 +29,40 @@
 
 ?>
 
-<div class="container contents-centered flex-column">
+<div class="container contents-centered flex-column" style="justify-content: flex-start;">
+    <div class="booking-requests-all">
+        <div class="card card-with-a-title width-100 booking-request <?= $sClassHide ?? '' ?>">
+            <div class="card-title">
+                Pending booking requests
+            </div>
 
-    <div class="card card-with-a-title width-100 booking-request <?= $sClassHide ?? '' ?>">
-        <div class="card-title">
-            Pending booking requests
+            <div id="booking-requests">
+            </div>
+
         </div>
 
-        <div id="booking-requests">
+        <div class="card card-with-a-title width-100 booking-request accepted-booking-request <?= $sClassHide ?? '' ?>">
+            <div class="card-title">
+                Accepted booking requests
+            </div>
+
+            <div id="accepted-booking-requests">
+            </div>
+
         </div>
 
+        <div class="card card-with-a-title width-100 booking-request accepted-booking-request <?= $sClassHide ?? '' ?>">
+            <div class="card-title">
+                Declined booking requests
+            </div>
+
+            <div id="declined-booking-requests">
+            </div>
+
+        </div>
     </div>
 
-    <div class="card card-with-a-title width-100 booking-request accepted-booking-request <?= $sClassHide ?? '' ?>">
-        <div class="card-title">
-            Accepted booking requests
-        </div>
-
-        <div id="accepted-booking-requests">
-
-
-        </div>
-
-    </div>
-
-    <div class="card card-with-a-title width-100 booking-request accepted-booking-request <?= $sClassHide ?? '' ?>">
-        <div class="card-title">
-            Declined booking requests
-        </div>
-
-        <div id="declined-booking-requests">
-        </div>
-
-    </div>
-
-    <div class="card card-with-a-title width-100">
+    <div class="card card-with-a-title width-100 bookings-for-your-dog">
         <div class="card-title">
             Bookings for your dog
         </div>
