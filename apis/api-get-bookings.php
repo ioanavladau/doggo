@@ -96,6 +96,20 @@ if($sBookingType=='upcoming'){
     $aAllResults = array();
 
     foreach( $aRows as $aRow ){
+
+        $iBookingId = $aRow->id;
+
+        $stmttwo = $db->prepare( 'SELECT * FROM reviews WHERE booking_fk=:iBookingId' );
+        $stmttwo->bindValue(':iBookingId', $iBookingId);
+        $stmttwo->execute();
+        $aRowsTwo = $stmttwo->fetchAll();
+
+        if($aRowsTwo == []){
+            $sReviewBtn = "<div class='vertical-divider'></div><button data-bookingfk='".$aRow->id."' data-dogsitterfk='".$aRow->dog_sitter_fk."' type='button' class='yellow-btn leave-a-review'>Leave a review</button>";
+        }else{
+            $sReviewBtn = "<div class='review-left'><h6>You left a review</h6></div>";
+        }
+
         if($aRow->time_interval == 'morning'){
             $sTimeIntervalString = '06:00-11:00';
         }else if($aRow->time_interval == 'noon'){
@@ -109,12 +123,14 @@ if($sBookingType=='upcoming'){
         }else if($aRow->is_confirmed == 0){
             $sStatusClass = 'gray-label';
             $sStatus = 'Not confirmed';
+            $sReviewBtn = '';
         }else if($aRow->is_confirmed == -1){
             $sStatusClass = 'red-label';
             $sStatus = 'Declined';
+            $sReviewBtn = '';
         }
         $sDateNormalized =  date("d/m/Y", substr($aRow->booking_date, 0, 10));
-        $sOneResult = "<div class='booking-container'><img src='".$aRow->profile_photo_url."' alt=''><div class='booking-name-time'><h5>".$aRow->first_name." ".$aRow->last_name."</h5><div class='booking-date-and-time'><h5 style='color: #474747'>".$sDateNormalized."</h5><span class='booking-time'>".$sTimeIntervalString."</span></div><h6>Dog walking for ".$aRow->dog_name."</h6><div class='".$sStatusClass."'>".$sStatus."</div></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Message</span><span class='booking-message'>".$aRow->message."</span></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Fare</span><h6>".$aRow->fare." kr./walk</h6></div></div>";
+        $sOneResult = "<div class='booking-container'><img src='".$aRow->profile_photo_url."' alt=''><div class='booking-name-time'><h5>".$aRow->first_name." ".$aRow->last_name."</h5><div class='booking-date-and-time'><h5 style='color: #474747'>".$sDateNormalized."</h5><span class='booking-time'>".$sTimeIntervalString."</span></div><h6>Dog walking for ".$aRow->dog_name."</h6><div class='".$sStatusClass."'>".$sStatus."</div></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Message</span><span class='booking-message'>".$aRow->message."</span></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Fare</span><h6>".$aRow->fare." kr./walk</h6></div>".$sReviewBtn."</div>";
         $aAllResults[] = $sOneResult;
     }
     $sAllResultsString = join(" ",$aAllResults);

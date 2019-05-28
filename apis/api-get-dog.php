@@ -23,7 +23,7 @@ foreach($aRows as $aRow){
 }
 
 if($aRows == []){
-  $dog = "<div class='card' id='add-a-dog-container'><a class='yellow-btn' href='your-dogs'>Add a pet</a><div></div></div>";
+  $dog = "<div id='add-a-dog-container'><p>Add a dog to be able to book a dog sitter.</p><a class='yellow-btn' href='your-dogs'>Add a pet</a><div></div></div>";
 }
 
 

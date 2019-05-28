@@ -25,7 +25,7 @@ try{
     foreach($aRows as $row){
         $sUserId = $row->id;
 
-        $stmt = $db->prepare("INSERT into dog_sitters VALUES (:sUserId, :iFareDogSitter, :sAboutDogSitter)");
+        $stmt = $db->prepare("INSERT into dog_sitters VALUES (null, :sUserId, :iFareDogSitter, :sAboutDogSitter)");
         $stmt->bindValue(':sUserId', $sUserId);
         $stmt->bindValue(':iFareDogSitter', $iFareDogSitter);
         $stmt->bindValue(':sAboutDogSitter', $sAboutDogSitter);

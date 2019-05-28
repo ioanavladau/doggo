@@ -102,9 +102,9 @@
         </div>
 
 
-        <div class="card" id="add-a-dog-container">
+        <!-- <div id="add-a-dog-container">
             <a class="yellow-btn" href="your-dogs">Add a pet</a>
-        </div>
+        </div> -->
 
         <div class="card card-with-a-title" id="myDog">
             <div class="card-title">

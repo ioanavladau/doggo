@@ -45,8 +45,12 @@
                     
                     if ($aRowsTwo == []){
                         $SearchForADogSitterLink = '';
+                        $BookingsLink = '';
+                        
                     }else{
                         $SearchForADogSitterLink = '<a href="search"><img src="images/search.svg" class="small-icon">Search for dog sitters</a>';
+                        $BookingsLink = "<a href='bookings'>Bookings</a>";
+                        
                     }
                     
                     
@@ -59,7 +63,7 @@
         <div class="right-nav">
             <a href="<?php echo $sProfileLink ?? 'profile'; ?>">Profile</a>
             <a href="<?php echo $sSettingsLink ?? 'settings'; ?>">Settings</a>
-            <a href="<?php echo $sBookingsLink ?? 'bookings'; ?>">Bookings</a>
+            <?= $BookingsLink ?? 'bookings'; ?>
             <a href="logout">Logout</a>
         </div>
     </nav>
