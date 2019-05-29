@@ -620,6 +620,12 @@ h6 {
     height: 30px; }
     .side-btns button:first-child {
       margin-bottom: 10px; }
+  .side-btns a {
+    width: 30px;
+    font-size: 13px;
+    padding: 8px 20px;
+    height: auto;
+    margin-bottom: 10px; }
 
 #myDog {
   margin: 0; }
@@ -760,7 +766,8 @@ input[type="radio"] {
   align-items: center;
   margin-bottom: 25px; }
   .dog-gender input {
-    margin-right: 10px !important; }
+    margin-right: 10px !important;
+    margin-bottom: 0; }
   .dog-gender span {
     margin-right: 20px; }
 
@@ -900,5 +907,31 @@ svg {
   margin-right: 5px; }
   .margin-right-5:last-child {
     margin-right: 0; }
+
+#frmChangeDog {
+  margin-bottom: 30px; }
+  #frmChangeDog .yellow-btn {
+    margin: 20px 0 0 0;
+    width: 100%; }
+  #frmChangeDog .about-text {
+    margin-left: 0;
+    margin-top: 0; }
+  #frmChangeDog input {
+    margin-bottom: 10px; }
+  #frmChangeDog h1 {
+    margin-bottom: 8px; }
+  #frmChangeDog h5 {
+    margin-bottom: 10px; }
+  #frmChangeDog .left-column {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px; }
+  #frmChangeDog #dog-image-preview {
+    height: 100px;
+    width: 100px; }
+  #frmChangeDog .custom-file-input {
+    margin-left: 30px; }
+  #frmChangeDog .about-photo {
+    margin: 0; }
 
 /*# sourceMappingURL=style.css.map */
