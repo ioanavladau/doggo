@@ -34,8 +34,12 @@ foreach( $aRowsTwo as $aRow ){
     $sOneReviewText = "<div class='review'><div class='review-header'><div class='owner-photo-info'><div class='photo'><img src='$aRow->profile_photo_url' alt=''></div><div class='review-owner-info'><h5>$aRow->first_name $aRow->last_name</h5><h5>$sDateNormalized</h5></div></div><div class='stars-rating'>$sAllStars</div></div><p class='review-text'>$aRow->review_text</p><div class='horizontal-divider'></div></div>";
     $aAllReviews[] = $sOneReviewText;
 }
-
 $sAllReviews = join(" ",$aAllReviews);
+
+if($aRowsTwo==[]){
+    $sAllReviews="<div class='review'><h5 style='text-transform: none;'>No reviews yet</h5></div>";
+}
+
 
 
 sendResponse(1, __LINE__, $sAllReviews);
