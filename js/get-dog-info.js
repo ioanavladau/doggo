@@ -20,7 +20,7 @@ function previewImage() {
 window.onload = function(){
   $.ajax({
       method:'GET',
-      url:'apis/api-get-dog-info.php',
+      url:'apis/api-get-dog-edit-page.php',
       data: {
           'sUserEmail': window.sUserEmail
       },
@@ -60,7 +60,7 @@ window.onload = function(){
         $("#dog-info").text("status 0");
       }
   }).fail(function(){
-      console.log('api-get-dog-info does not work')
+      console.log('api-get-dog-edit-page does not work')
   });
 
   return false

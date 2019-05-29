@@ -8,26 +8,26 @@ $sUserEmail = $_SESSION['sEmail'];
 
 $sDogName = $_POST['txtsDogName'];
 if(empty($sDogName)){
-  sendResponse(0,__LINE__,"sDogName can't be empty");
+  sendResponse(0,__LINE__,"Please add your dog's name");
 }
 
 $iDogWeight = $_POST['txtiDogWeight'];
 if(empty($iDogWeight)){
-  sendResponse(0,__LINE__,"iDogWeight can't be empty");
+  sendResponse(0,__LINE__,"Please add your dog's weight");
 }
 
 $iDogYears = $_POST['txtiDogYears'];
 if(empty($iDogYears)){
-  sendResponse(0,__LINE__,"iDogYears can't be empty");
+  sendResponse(0,__LINE__,"Please add your dog's age");
 }
 
 $iDogMonths = $_POST['txtiDogMonths'];
 if(empty($iDogMonths)){
-  sendResponse(0,__LINE__,"iDogMonths can't be empty");
+  sendResponse(0,__LINE__,"Please add your dog's age");
 }
 
 if(!isset($_POST['rbDogGender'])){
-  sendResponse(0,__LINE__,"Please select gender");
+  sendResponse(0,__LINE__,"Please select your dog's gender");
 } else {
     $bDogGender = $_POST['rbDogGender'];
     if($bDogGender == 'female'){
@@ -43,7 +43,7 @@ $iDogBreed = $_POST['selDogBreed'];
 // }
 
 if(!isset($_POST['rbDogSpayedNeutered'])){
-  sendResponse(0,__LINE__,"Please select if dog is spayed/neutered");
+  sendResponse(0,__LINE__,"Please select if your dog is spayed/neutered");
 } else {
     $rbDogSpayedNeutered = $_POST['rbDogSpayedNeutered'];
     if($rbDogSpayedNeutered == 'yes'){
@@ -52,7 +52,7 @@ if(!isset($_POST['rbDogSpayedNeutered'])){
 }
 
 if(!isset($_POST['rbDogMicrochipped'])){
-  sendResponse(0,__LINE__,"Please select if dog is microchipped");
+  sendResponse(0,__LINE__,"Please select if your dog is microchipped");
 } else {
     $bDogMicrochipped = $_POST['rbDogMicrochipped'];
     if($bDogMicrochipped == 'yes'){
@@ -61,7 +61,7 @@ if(!isset($_POST['rbDogMicrochipped'])){
 }
 
 if(!isset($_POST['rbDogFriendlyWithOtherDogs'])){
-  sendResponse(0,__LINE__,"Please select if dog is friendly with other dogs");
+  sendResponse(0,__LINE__,"Please select if your  dog is friendly with other dogs");
 } else {
     $bDogFriendlyWithOtherDogs = $_POST['rbDogFriendlyWithOtherDogs'];
     if($bDogFriendlyWithOtherDogs == 'yes'){
@@ -70,104 +70,142 @@ if(!isset($_POST['rbDogFriendlyWithOtherDogs'])){
 }
 
 $sDogSpecialRequirements = $_POST['txtsDogSpecialRequirements'] ?? '';
-$sDogVetContact = $_POST['txtsDogVetContact'] ?? '';
-$sDogAbout = $_POST['txtsDogAbout'] ?? '';
+
+$sDogVetContact = $_POST['txtsDogVetContact'];
+if(empty($sDogVetContact)){
+  sendResponse(0,__LINE__,"Please add vet contact");
+}
+
+
+$sDogAbout = $_POST['txtsDogAbout'];
+if(empty($sDogAbout)){
+  sendResponse(0,__LINE__,"Please add a description of your dog");
+}
+
 $sDogCareInstructions = $_POST['txtsDogCareInstructions'] ?? '';
 // $imgFile = $_FILES['fileToUpload'] ?? '';
 
 
 
-
-if(!isset($_FILES['fileToUpload'])){
-  sendResponse(0,__LINE__,"Please select image");
-} else {
-    $check = getimagesize($_FILES['fileToUpload']['tmp_name']);
-    if($check !== false) {
+$target_dir = "../images/dog-photo/";
+    // // DOG PHOTO UPLOAD
+    $target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    // // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== null) {
         // echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
         // echo "File is not an image.";
-        $uploadOk = 0; 
-        sendResponse(0, __LINE__, "file not an image");
+        $uploadOk = 0;
     }
-}
+    // // Check if file already exists
+    // if (file_exists($target_file)) {
+    //     // echo "Sorry, file already exists.";
+    //     $uploadOk = 0;
+    // }
+    // Check file size
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
+        // echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+    // // Allow certain file formats
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+      // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+        // sendResponse(0, __LINE__, 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.');
+    }
+    // // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        sendResponse(0, __LINE__, 'Sorry, your file could not be uploaded.');
+        // echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+    } 
+    $result = move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);
+    if($result == 1){
+      // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+      $sImageUrl = $target_dir . $_FILES["fileToUpload"]["name"];
+    }   
 
 
-// DOG PHOTO UPLOAD
-$target_dir = "../images/dog-photo/";
-$target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-// $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-// if($check !== false) {
-//     // echo "File is an image - " . $check["mime"] . ".";
-//     $uploadOk = 1;
+
+
+
+// if(!isset($fImage)){
+//   $sImageUrl = '../images/dog.svg';
+//   // sendResponse(0,__LINE__,"Please add an image of your dog");
 // } else {
-//     // echo "File is not an image.";
-//     $uploadOk = 0;
+//     $target_dir = "../images/dog-photo/";
+//     // // DOG PHOTO UPLOAD
+//     $target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
+//     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+//     // // Check if image file is a actual image or fake image
+//     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+//     if($check !== false) {
+//         // echo "File is an image - " . $check["mime"] . ".";
+//         $uploadOk = 1;
+//     } else {
+//         // echo "File is not an image.";
+//         $uploadOk = 0;
+//     }
+//     // // Check if file already exists
+//     // if (file_exists($target_file)) {
+//     //     // echo "Sorry, file already exists.";
+//     //     $uploadOk = 0;
+//     // }
+//     // Check file size
+//     if ($_FILES["fileToUpload"]["size"] > 500000) {
+//         // echo "Sorry, your file is too large.";
+//         $uploadOk = 0;
+//     }
+//     // // Allow certain file formats
+//     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+//     && $imageFileType != "gif" ) {
+//       // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//         $uploadOk = 0;
+//         // sendResponse(0, __LINE__, 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.');
+//     }
+//     // // Check if $uploadOk is set to 0 by an error
+//     if ($uploadOk == 0) {
+//         sendResponse(0, __LINE__, 'Sorry, your file could not be uploaded.');
+//         // echo "Sorry, your file was not uploaded.";
+//     // if everything is ok, try to upload file
+//     } else {
+//         $result = move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);
+//         if($result == 1){
+//           // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+//           $sImageUrl = $target_dir . $_FILES["fileToUpload"]["name"];
+//         }   
+//       }
 // }
-// Check if file already exists
-if (file_exists($target_file)) {
-    // echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-    // echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-    // sendResponse(0, __LINE__, 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.');
-}
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    sendResponse(0, __LINE__, 'Sorry, your file was not uploaded.');
-    // echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-        $result = move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);
-        if($result == 1){
-          // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-          $stmt = $db->prepare( "INSERT INTO dogs (id, user_fk, name, weight, breed_fk, age_years, age_months,  gender , image_url,  spayed_neutered ,  microchipped ,  friendly ,  special_requirements ,vet_contact ,about , care_instructions) 
-          VALUES (NULL, (SELECT id FROM users WHERE email = :sEmail), :sDogName, :iDogWeight, :iDogBreed, :iDogYears, :iDogMonths, :bDogGender, :sImageUrl, :bDogSpayedNeutered, :bDogMicrochipped, :bDogFriendlyWithOtherDogs, :sDogSpecialRequirements, :sDogVetContact, :sDogAbout, :sDogCareInstructions)" );
-          
-          $stmt->bindValue(':sEmail', $sUserEmail);
-          $stmt->bindValue(':sDogName', $sDogName);
-          $stmt->bindValue(':iDogWeight', $iDogWeight);
-          $stmt->bindValue(':iDogBreed', $iDogBreed);
-          $stmt->bindValue(':iDogYears', $iDogYears);
-          $stmt->bindValue(':iDogMonths', $iDogMonths);
-          $stmt->bindValue(':bDogGender', $bDogGender);
-          $stmt->bindValue(':sImageUrl', $target_dir . $_FILES["fileToUpload"]["name"]);
-          $stmt->bindValue(':bDogSpayedNeutered', $rbDogSpayedNeutered);
-          $stmt->bindValue(':bDogMicrochipped', $bDogMicrochipped);
-          $stmt->bindValue(':bDogFriendlyWithOtherDogs', $bDogFriendlyWithOtherDogs);
-          $stmt->bindValue(':sDogSpecialRequirements', $sDogSpecialRequirements);
-          $stmt->bindValue(':sDogVetContact', $sDogVetContact);
-          $stmt->bindValue(':sDogAbout', $sDogAbout);
-          $stmt->bindValue(':sDogCareInstructions', $sDogCareInstructions);
-
-          
-          $stmt->execute();
-          header("Location: ../profile");
-          sendResponse(1, __LINE__, 'dog saved');
-          exit;
-          
-        }
-        else{
-          header("Location: ../profile");
-          sendResponse(0, __LINE__, 'error uploading photo');
-          exit;
-        }
-       
-    }
 
 
+
+    $stmt = $db->prepare( "INSERT INTO dogs (id, user_fk, name, weight, breed_fk, age_years, age_months,  gender, image_url,  spayed_neutered,  microchipped,  friendly,  special_requirements ,vet_contact, about, care_instructions) 
+    VALUES (NULL, (SELECT id FROM users WHERE email = :sEmail), :sDogName, :iDogWeight, :iDogBreed, :iDogYears, :iDogMonths, :bDogGender, :sImageUrl, :bDogSpayedNeutered, :bDogMicrochipped, :bDogFriendlyWithOtherDogs, :sDogSpecialRequirements, :sDogVetContact, :sDogAbout, :sDogCareInstructions)" );
+   
+  //  $sImageUrl = "../images/dog.svg";
+    $stmt->bindValue(':sEmail', $sUserEmail);
+    $stmt->bindValue(':sDogName', $sDogName);
+    $stmt->bindValue(':iDogWeight', $iDogWeight);
+    $stmt->bindValue(':iDogBreed', $iDogBreed);
+    $stmt->bindValue(':iDogYears', $iDogYears);
+    $stmt->bindValue(':iDogMonths', $iDogMonths);
+    $stmt->bindValue(':bDogGender', $bDogGender);
+    $stmt->bindValue(':sImageUrl', $sImageUrl);
+    $stmt->bindValue(':bDogSpayedNeutered', $rbDogSpayedNeutered);
+    $stmt->bindValue(':bDogMicrochipped', $bDogMicrochipped);
+    $stmt->bindValue(':bDogFriendlyWithOtherDogs', $bDogFriendlyWithOtherDogs);
+    $stmt->bindValue(':sDogSpecialRequirements', $sDogSpecialRequirements);
+    $stmt->bindValue(':sDogVetContact', $sDogVetContact);
+    $stmt->bindValue(':sDogAbout', $sDogAbout);
+    $stmt->bindValue(':sDogCareInstructions', $sDogCareInstructions);
+
+    
+    $stmt->execute();
+    sendResponse(1, __LINE__, 'dog saved');
 
 /********************************/
 

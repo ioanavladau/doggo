@@ -755,7 +755,10 @@ input[type="radio"] {
 .dog-photo-container {
   display: flex;
   align-items: center;
-  margin: 30px 0; }
+  margin: 30px 0;
+  flex-wrap: wrap; }
+  .dog-photo-container label {
+    width: 100%; }
   .dog-photo-container input::before {
     margin-left: 20px; }
   .dog-photo-container .custom-file-input {
