@@ -51,10 +51,6 @@
     }else if($sSearchTimeInterval=='evening'){
         $sTimePeriod = '15:00-22:00';
     }
-
-
-    
-
     
 ?>
 
@@ -89,34 +85,30 @@
                 <button class="yellow-btn contact-btn" id="contact-dog-sitter" onclick="location.href='book-dogsitter.php?sDogSitterId=<?= $sDogSitterId ?>&sSearchDate=<?= $sSearchDate ?>&sSearchTimeInterval=<?= $sSearchTimeInterval ?>';">Contact <?= $sFirstName ?> for <?= $sDateNormalized ?></button>
             </div>
 
-            <div class="dog-sitter-photos-container">
+            <?php
+                
+                $stmtthree = $db->prepare( 'SELECT url FROM dog_sitters_photos WHERE user_fk = :sDogSitterId' );
+                $stmtthree->bindValue(':sDogSitterId', $sDogSitterId);
+                $stmtthree->execute();
+                $aRowsThree = $stmtthree->fetchAll();
 
+                if($aRowsThree == []){
+                    $sHideClass = 'hide';
+                }
+            ?>
+            <div class="dog-sitter-photos-container <?= $sHideClass ?>">
                 <?php
-                    
-                    $stmtthree = $db->prepare( 'SELECT url FROM dog_sitters_photos WHERE user_fk = :sDogSitterId' );
-                    $stmtthree->bindValue(':sDogSitterId', $sDogSitterId);
-                    $stmtthree->execute();
-                    $aRowsThree = $stmtthree->fetchAll();
-
                     foreach( $aRowsThree as $aRow ){
                         echo "<div><img class='main-photo' src='images/dog-photo/$aRow->url' alt=''></div>";
                     }
                 ?>
-
-                
-                <!-- <div>
-                    <img class="regular-photo" src="images/dog-photo/elizabeth.jpg" alt="">
-                </div>
-                <div>
-                    <img class="regular-photo" src="images/dog-photo/sunny.jpg" alt="">
-                </div>    
-                <div>
-                    <img class="regular-photo" src="images/dog-photo/elizabeth.jpg" alt="">
-                </div>
-                <div>
-                    <img class="regular-photo" src="images/dog-photo/sunny.jpg" alt="">
-                </div> -->
             </div>
+
+            <div class="reviews-container">
+                <h3>Reviews</h3>
+                <div id="reviews-box"></div> 
+            </div>
+
         </div>
     </div>
     

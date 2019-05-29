@@ -10,7 +10,7 @@ $sUserEmail = $_GET['sUserEmail'] ?? '';
 
 // $sSearchDate = $sSearchDate
 
-$stmt = $db->prepare( 'SELECT users.id, users.first_name, users.last_name, users.email, users.profile_photo_url, users.address, dog_sitters.about
+$stmt = $db->prepare( 'SELECT users.id, users.first_name, users.last_name, users.email, users.profile_photo_url, users.address, dog_sitters.about, dog_sitters.fare
 FROM users INNER JOIN dog_sitters ON users.id = dog_sitters.user_fk
 WHERE NOT users.email = :sUserEmail AND users.is_dog_sitter=1 AND users.id IN (SELECT user_fk 
               FROM dog_sitters_availability
@@ -25,7 +25,7 @@ $aRows = $stmt->fetchAll();
 
 $aResults = array();
 foreach( $aRows as $aRow ){
-        $aResults[] = "<a href='dog-sitter-profile.php?id=$aRow->id&sSearchDate=$sSearchDate&sSearchTimeInterval=$sSearchTimeInterval'><div class='white-card'><div class='photo'><img src='$aRow->profile_photo_url' alt=''></div><div class='about'><h1>$aRow->first_name $aRow->last_name</h1><p>$aRow->about</p><p class='address'>$aRow->address</p></div><div class='fare'><h2>$25</h2></div></div></a>";
+        $aResults[] = "<a href='dog-sitter-profile.php?id=$aRow->id&sSearchDate=$sSearchDate&sSearchTimeInterval=$sSearchTimeInterval'><div class='white-card'><div class='photo'><img src='$aRow->profile_photo_url' alt=''></div><div class='about'><h1>$aRow->first_name $aRow->last_name</h1><p>$aRow->about</p></div><div class='fare'><h2>$aRow->fare kr./walk</h2></div></div></a>";
 }
 
 if($aRows == []){

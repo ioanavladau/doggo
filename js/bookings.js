@@ -212,11 +212,22 @@ $("body").on("click", ".cancel-booking", function(event){
         if(jData.status == 1){
             console.log(jData.message)
             location.reload()
-            // $('#booking-row tbody').empty();
-            // $('#booking-row tbody').append(jData.message);
+
         }
     }).fail(function(){
         console.log('api-delete-booking does not work')
     })
+    
+})
+
+
+$("body").on("click", ".leave-a-review", function(){
+
+    let iBookingFk = this.dataset.bookingfk
+    let iDogsitterfk = this.dataset.dogsitterfk
+
+    window.location.href = "review-form?bookingfk="+iBookingFk+"&dogsitterfk="+iDogsitterfk
+
+
     
 })

@@ -317,7 +317,7 @@ h2 {
     color: white !important; }
 
 .hide {
-  display: none; }
+  display: none !important; }
 
 .fc-button-group {
   display: none !important; }
@@ -575,6 +575,11 @@ h6 {
   height: 45px;
   background-color: #d6d6d6; }
 
+.horizontal-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #d6d6d6; }
+
 .booking-message {
   font-size: 14px; }
 
@@ -615,6 +620,12 @@ h6 {
     height: 30px; }
     .side-btns button:first-child {
       margin-bottom: 10px; }
+  .side-btns a {
+    width: 30px;
+    font-size: 13px;
+    padding: 8px 20px;
+    height: auto;
+    margin-bottom: 10px; }
 
 #myDog {
   margin: 0; }
@@ -728,10 +739,17 @@ h6 {
   object-fit: cover;
   object-position: center; }
 
-#add-a-dog-container .yellow-btn {
-  padding: 20px;
-  width: auto;
-  height: auto; }
+#add-a-dog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  #add-a-dog-container .yellow-btn {
+    padding: 20px;
+    width: 86px;
+    height: auto; }
+
+#myDog p {
+  margin: 30px 0; }
 
 #frmAddDog {
   margin-top: 50px; }
@@ -748,7 +766,8 @@ input[type="radio"] {
   align-items: center;
   margin-bottom: 25px; }
   .dog-gender input {
-    margin-right: 10px !important; }
+    margin-right: 10px !important;
+    margin-bottom: 0; }
   .dog-gender span {
     margin-right: 20px; }
 
@@ -777,5 +796,145 @@ select {
 
 #dog-image-preview {
   background-color: lightgray; }
+
+#frmBecomeDogsitter {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #frmBecomeDogsitter .yellow-btn {
+    width: 100%; }
+  #frmBecomeDogsitter input {
+    margin: 5px 0 15px 0; }
+  #frmBecomeDogsitter textarea {
+    margin-bottom: 10px;
+    padding: 10px; }
+
+#txtsAboutDogSitter {
+  height: 100px; }
+
+.white-card .about h1 {
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase; }
+.white-card .about p {
+  color: black; }
+.white-card .fare h2 {
+  font-family: "Rubik", sans-serif;
+  color: black;
+  text-transform: uppercase;
+  font-size: 19px;
+  font-weight: 500; }
+
+.leave-a-review {
+  width: 120px;
+  font-size: 13px;
+  height: auto;
+  padding: 10px 5px; }
+
+#frmLeaveAReview {
+  margin: 30px 0 20px 0; }
+  #frmLeaveAReview input {
+    margin-bottom: 10px; }
+  #frmLeaveAReview h5 {
+    margin-bottom: 10px; }
+
+.review-stars {
+  display: flex;
+  margin-bottom: 30px; }
+  .review-stars .review-star {
+    cursor: pointer; }
+    .review-stars .review-star img {
+      height: 25px;
+      margin-right: 5px; }
+
+svg {
+  height: 25px;
+  margin-right: 5px; }
+
+.st0 {
+  fill: #E0E0E0; }
+  .st0:hover {
+    fill: #f4db27 !important; }
+
+.yellow-star {
+  fill: #f4db27 !important; }
+
+#txtReview {
+  min-width: 35vw;
+  max-width: 35vw;
+  min-height: 70px;
+  margin: 5px 0px 15px;
+  padding: 10px; }
+
+.review-left h6 {
+  color: #93cc25 !important; }
+
+.reviews-container {
+  margin: 50px 0 0 30px; }
+  .reviews-container h3 {
+    font-weight: 500; }
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  .review-header .photo {
+    flex: 0; }
+    .review-header .photo img {
+      height: 60px;
+      width: 60px; }
+  .review-header h5 {
+    margin-bottom: 3px; }
+  .review-header .review-owner-info {
+    margin-left: 20px; }
+
+.owner-photo-info {
+  display: flex;
+  align-items: center; }
+
+.review {
+  width: 80%;
+  margin-bottom: 30px; }
+  .review p {
+    font-size: 14px;
+    line-height: 1.8em;
+    margin-bottom: 25px; }
+
+.stars-rating {
+  display: flex; }
+  .stars-rating img {
+    height: 25px; }
+
+.margin-right-5 {
+  margin-right: 5px; }
+  .margin-right-5:last-child {
+    margin-right: 0; }
+
+#frmChangeDog {
+  margin-bottom: 30px; }
+  #frmChangeDog .yellow-btn {
+    margin: 20px 0 0 0;
+    width: 100%; }
+  #frmChangeDog .about-text {
+    margin-left: 0;
+    margin-top: 0; }
+  #frmChangeDog input {
+    margin-bottom: 10px; }
+  #frmChangeDog h1 {
+    margin-bottom: 8px; }
+  #frmChangeDog h5 {
+    margin-bottom: 10px; }
+  #frmChangeDog .left-column {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px; }
+  #frmChangeDog #dog-image-preview {
+    height: 100px;
+    width: 100px; }
+  #frmChangeDog .custom-file-input {
+    margin-left: 30px; }
+  #frmChangeDog .about-photo {
+    margin: 0; }
 
 /*# sourceMappingURL=style.css.map */

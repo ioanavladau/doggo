@@ -27,17 +27,25 @@
     // }
 ?>
 
-<div class="container">
-<div class="card">
-    <form id="frmBecomeDogsitter" enctype="multipart/form-data">
-        <label for="txtiFare">Hourly Fare</label>
-        <input type="number" name="txtiFareDogSitter" id="txtiFareDogSitter"><br>
-        <label for="txtAbout">About Me</label>
-        <textarea name="txtsAboutDogSitter" id="txtsAboutDogSitter"></textarea><br>
-        <input type="file" name="dogSitterPicturesToUpload" id="dogSitterPicturesToUpload">
-        <input type="submit" value="Become a dogsitter!" name="submit">
-        
-    </form>
+<div class="container contents-centered">
+    <div class="card card-with-a-title ">
+        <div class="card-title">
+            Become a dogsitter
+        </div>
+        <form id="frmBecomeDogsitter" enctype="multipart/form-data">
+            <div>
+                <label for="txtiFare">Hourly Fare</label>
+                <input type="number" name="txtiFareDogSitter" id="txtiFareDogSitter"><br>
+            </div>
+
+            <div>
+                <label for="txtAbout">About Me</label>
+                <textarea name="txtsAboutDogSitter" id="txtsAboutDogSitter"></textarea><br>
+            </div>
+            <input type="file" name="dogSitterPicturesToUpload" id="dogSitterPicturesToUpload" class="custom-file-input custom-file-input-one-file">
+            <input class="yellow-btn" type="submit" value="Become a dogsitter!" name="submit">
+            
+        </form>
     </div>
 </div>
 

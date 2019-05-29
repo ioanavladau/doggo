@@ -26,5 +26,25 @@ window.onload = function(){
         console.log('api-get-available-dates does not work')
     });
 
+
+    $.ajax({
+        method:'GET',
+        url:'apis/api-get-reviews.php',
+        data: {
+            'sUserEmail': window.sHeaderDogSitterEmail
+        },
+        dataType:'JSON'
+    }).done(function(jData){
+        console.log(jData)
+        if(jData.status == 1){
+            console.log(jData.message)
+            $('#reviews-box').append(jData.message);
+        }else{
+
+        }
+    }).fail(function(){
+        console.log('api-get-reviews does not work')
+    });
+
     return false
 } 
