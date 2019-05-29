@@ -881,6 +881,10 @@ input[type="radio"]{
     display: flex;
     align-items: center;
     margin: 30px 0;
+    flex-wrap: wrap;
+    label{
+        width: 100%;
+    }
     input::before{
         margin-left: 20px;
     }
@@ -1078,4 +1082,5 @@ svg{
     .about-photo{
         margin: 0;
     }
+    // background-image: url('../images/dog.svg');
 }
