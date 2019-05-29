@@ -14,7 +14,7 @@
   $dogInfo->sDogName = $row->name;
   $dogInfo->sDogBreed = $row->breed;
   $dogInfo->iDogWeight = $row->weight;
-  $dogInfo->sDogImageUrl = $row->image_url;
+  $dogInfo->sDogImageUrl = 'doggo/'.$row->image_url;
   $dogInfo->bDogSpayedNeutered = $row->spayed_neutered;
   $dogInfo->bDogMicrochipped = $row->microchipped;
   $dogInfo->bDogFriendly = $row->friendly;

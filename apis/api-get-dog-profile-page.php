@@ -19,7 +19,7 @@ if(sizeof($aRows)==1){
 }
 
 foreach($aRows as $aRow){
-  $dog = "<div class='white-card'><div class='photo'><img src='$aRow->image_url'></div><div class='about'><h1>$aRow->name</h1><h5>$aRow->breed</h5></div><div class='side-btns'><button class='yellow-btn' id='edit-dog-btn'>Edit</button><button class='yellow-btn' id='view-dog-btn'>View</button></div></div>";
+  $dog = "<div class='white-card'><div class='photo'><img src='doggo/$aRow->image_url'></div><div class='about'><h1>$aRow->name</h1><h5>$aRow->breed</h5></div><div class='side-btns'><a href='edit-dog'><button class='yellow-btn' id='edit-dog-btn'>Edit</button></a><button class='yellow-btn' id='view-dog-btn'>View</button></div></div>";
 }
 
 if($aRows == []){

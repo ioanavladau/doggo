@@ -112,7 +112,7 @@ $(document).ready(function(){
 
 $.ajax({
     method:'GET',
-    url:'apis/api-get-dog.php',
+    url:'apis/api-get-dog-profile-page.php',
     dataType:'JSON'
 }).done(function(jData){
     console.log(jData)
