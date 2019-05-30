@@ -2,10 +2,11 @@
 
   require_once '../connect.php';
 
-  $sUserEmail = $_GET['sUserEmail'] ?? '';
+  // $sUserEmail = $_GET['sUserEmail'] ?? '';
+  $dogId = $_GET['id'];
 
-  $stmt = $db->prepare( 'SELECT dogs.name, breeds.name AS breed, dogs.weight, dogs.age_years, dogs.age_months, dogs.image_url, dogs.spayed_neutered, dogs.microchipped, dogs.friendly, dogs.special_requirements, dogs.vet_contact, dogs.about, dogs.care_instructions FROM dogs INNER JOIN breeds on dogs.breed_fk = breeds.id WHERE dogs.user_fk = (SELECT id FROM users WHERE email = :sUserEmail)' );
-  $stmt->bindValue(':sUserEmail', $sUserEmail);
+  $stmt = $db->prepare( 'SELECT dogs.name, breeds.name AS breed, dogs.weight, dogs.age_years, dogs.age_months, dogs.image_url, dogs.spayed_neutered, dogs.microchipped, dogs.friendly, dogs.special_requirements, dogs.vet_contact, dogs.about, dogs.care_instructions FROM dogs INNER JOIN breeds on dogs.breed_fk = breeds.id WHERE dogs.id=:dogId' );
+  $stmt->bindValue(':dogId', $dogId);
   $stmt->execute();
   $row = $stmt->fetch();
 

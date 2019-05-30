@@ -6,6 +6,7 @@ require_once '../connect.php';
 
 session_start();
 $sUserEmail = $_SESSION['sEmail'];
+// $sDogId = $_GET['id'];
 
 $stmt = $db->prepare('SELECT dogs.name, dogs.gender, dogs.id, dogs.image_url, breeds.name AS breed FROM dogs JOIN breeds ON dogs.breed_fk = breeds.id WHERE user_fk=(SELECT id FROM users WHERE email=:sUserEmail)');
 $stmt->bindValue(':sUserEmail', $sUserEmail);
@@ -19,7 +20,7 @@ if(sizeof($aRows)==1){
 }
 
 foreach($aRows as $aRow){
-  $dog = "<div class='white-card'><div class='photo'><img src='doggo/$aRow->image_url'></div><div class='about'><h1>$aRow->name</h1><h5>$aRow->breed</h5></div><div class='side-btns'><a href='edit-dog' class='yellow-btn' id='edit-dog-btn'>Edit</a><a href='view-dog?id=$aRow->id' class='yellow-btn' id='view-dog-btn'>View</a></div></div>";
+  $dog = "<div class='white-card'><div class='photo'><img src='doggo/$aRow->image_url'></div><div class='about'><h1>$aRow->name</h1><h5>$aRow->breed</h5></div><div class='side-btns'><a href='edit-dog?id=$aRow->id' class='yellow-btn' id='edit-dog-btn'>Edit</a><a href='view-dog?id=$aRow->id' class='yellow-btn' id='view-dog-btn'>View</a></div></div>";
 }
 
 if($aRows == []){
