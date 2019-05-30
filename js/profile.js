@@ -120,7 +120,7 @@ $.ajax({
         console.log(jData)
         $("#myDog").append(jData.message);
         if(jData.showAddDogContainer == 1){
-            $("#add-a-dog-container").removeClass('hide');
+            $("#add-a-dog-container").addClass('hide');
         }
     }else{
         console.log("cannot display doggo")
