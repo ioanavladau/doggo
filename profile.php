@@ -76,6 +76,18 @@
                     <?= $sIsDogSitter ?? "" ?>
                 </div>
             </div>
+
+            <div class="card card-with-a-title" id="myDog">
+                <div class="title">
+                <h5>Your dog</h5>
+                </div>
+
+
+                <div id="add-a-dog-container">
+                    <a class="yellow-btn" href="your-dogs">Add a dog</a>
+                </div>
+            </div>
+
             
         </div>
         <div class="card card-with-a-title <?= $sClassHide ?? '' ?>">
@@ -102,15 +114,9 @@
         </div>
 
 
-        <!-- <div id="add-a-dog-container">
-            <a class="yellow-btn" href="your-dogs">Add a pet</a>
-        </div> -->
+       
 
-        <div class="card card-with-a-title" id="myDog">
-            <div class="card-title">
-               Your dog
-            </div>
-        </div>
+        
 
         
 </div>

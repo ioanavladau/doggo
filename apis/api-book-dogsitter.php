@@ -146,18 +146,26 @@ $stmtfive->execute();
 
 
 
+$stmtsix = $db->prepare( 'SELECT id FROM dogs WHERE user_fk IN (SELECT id FROM users WHERE email=:sUserEmail)' );
+$stmtsix->bindParam(':sUserEmail', $sUserEmail);
+$stmtsix->execute();
+
+$aRowsSix = $stmtsix->fetchAll();
+
+foreach($aRowsSix as $aRow){
+
+    $iDogId = $aRow->id;
+};
 
 
 
-
-
-
-$stmttwo = $db->prepare( 'INSERT INTO bookings(id, user_fk, dog_sitter_fk, dog_fk, time_interval, message, booking_date) VALUES(null, :sUserId, :sDogSitterId, 1, :sTime, :sBookingMessage, :sDate)' );
+$stmttwo = $db->prepare( 'INSERT INTO bookings(id, user_fk, dog_sitter_fk, dog_fk, time_interval, message, booking_date) VALUES(null, :sUserId, :sDogSitterId, :iDogId, :sTime, :sBookingMessage, :sDate)' );
 $stmttwo->bindValue(':sUserId', $sUserId);
 $stmttwo->bindValue(':sDogSitterId', $sDogSitterId);
 $stmttwo->bindValue(':sBookingMessage', $sBookingMessage);
 $stmttwo->bindValue(':sTime', $sTime);
 $stmttwo->bindValue(':sDate', $sDate);
+$stmttwo->bindValue(':iDogId', $iDogId);
 $stmttwo->execute();
 
 sendResponse(1, __LINE__, "Success");

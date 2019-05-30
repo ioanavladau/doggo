@@ -182,6 +182,8 @@ textarea{
     margin-right: 10px;
     height: 70vh;
     align-items: flex-start;
+    display: flex;
+    justify-content: center;
 }
 .dog-sitters{
     flex: 3;
@@ -503,6 +505,10 @@ h2{
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+}
+img{
+    object-fit: cover;
+    object-position: center;
 }
 .request-info{
     display: flex;
@@ -839,18 +845,40 @@ h6{
     object-position: center;
 }
 #add-a-dog-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 15px;
+    padding: 20px 20px;
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: whitesmoke;
     .yellow-btn{
-        padding: 20px;
-        width: 86px;
+        padding: 13px 20px;
+        width: 90px;
         height: auto;
     }
 }
 #myDog{
+    padding: 0 40px 40px 40px;
+    width: 100%;
+    margin-top: 40px;
+    align-items: flex-start;
     p{
-        margin: 30px 0;
+        margin: 0 0 20px 0;
+    }
+    .white-card{
+        padding: 20px 20px;
+        width: 100%;
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: whitesmoke;
+    }
+    .title{
+        width: 100%;
+        padding: 0 40px 0 0;
+        box-sizing: border-box;
+    }
+    .photo{
+        flex: 0;
     }
 }
 #frmAddDog{
