@@ -14,7 +14,7 @@
                 <input name="txtLoginPassword" type="password" data-validate="yes" data-type="string" data-min="6" data-max="50">
                 <button class="yellow-btn">Log in</button>
                 <div class="login-links">
-                    <a href="forgot-password">Forgot password?</a>
+                    <!-- <a href="forgot-password">Forgot password?</a> -->
                     <div>Not a member? <a href="signup">Sign up</a></div>
                 </div>
             </form>

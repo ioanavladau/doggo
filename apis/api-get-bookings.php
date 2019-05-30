@@ -76,7 +76,7 @@ if($sBookingType=='upcoming'){
         $sOneResult = "<div class='booking-container'><img src='".$aRow->profile_photo_url."' alt=''><div class='booking-name-time'><h5>".$aRow->first_name." ".$aRow->last_name."</h5><div class='booking-date-and-time'><h5 style='color: #474747'>".$sDateNormalized."</h5><span class='booking-time'>".$sTimeIntervalString."</span></div><h6>Dog walking for ".$aRow->dog_name."</h6><div class='".$sStatusClass."'>".$sStatus."</div></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Message</span><span class='booking-message'>".$aRow->message."</span></div><div class='vertical-divider'></div><div class='message-block'><span class='booking-time'>Fare</span><h6>".$aRow->fare." kr./walk</h6></div>".$sCancelBtn."</div>";
         $aAllResults[] = $sOneResult;
     }
-    $sAllResultsString = join(" ",$aAllResults);
+    $sAllResultsString = join("",$aAllResults);
     if($aRows==[]){
         $sAllResultsString = "<div style='color: lightgray;'>No pending bookings yet</div>";
     }

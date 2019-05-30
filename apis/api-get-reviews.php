@@ -16,7 +16,7 @@ foreach( $aRows as $aRow ){
     $iDogSitterFk = $aRow->id;
 }
 
-$stmttwo = $db->prepare( 'SELECT reviews.review_date, reviews.review_text, reviews.stars, users.profile_photo_url, users.first_name, users.last_name FROM reviews INNER JOIN users ON users.id = reviews.user_fk WHERE dog_sitter_fk = :iDogSitterFk' );
+$stmttwo = $db->prepare( 'SELECT reviews.review_date, reviews.review_text, reviews.stars, users.profile_photo_url, users.first_name, users.last_name FROM reviews INNER JOIN users ON users.id = reviews.user_fk WHERE dog_sitter_fk = :iDogSitterFk ORDER BY reviews.review_date DESC' );
 $stmttwo->bindValue(':iDogSitterFk', $iDogSitterFk);
 $stmttwo->execute();
 $aRowsTwo = $stmttwo->fetchAll();

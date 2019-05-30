@@ -2,6 +2,9 @@
     $sGreyBodyClass = "class='grey-bg'";
     
     session_start();
+    if( !isset($_SESSION['sEmail']) ){
+        header('Location: login.php');
+    }
     $sUserEmail = $_SESSION['sEmail'];
     $sHeaderLink = "<script> window.sUserEmail = '$sUserEmail'; </script>";
     
