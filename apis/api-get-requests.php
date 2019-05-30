@@ -7,7 +7,7 @@ require_once '../connect.php';
 $sUserEmail = $_GET['sUserEmail'] ?? '';
 // $sBookingType = $_GET['sBookingType'] ?? '';
 
-$stmtone = $db->prepare( 'SELECT bookings.id AS booking_id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, dogs.name AS dog_name, dogs.image_url AS dog_photo, breeds.name AS breed_name, (SELECT users.first_name FROM users WHERE users.id = bookings.user_fk) AS owner_first_name, (SELECT users.last_name FROM users WHERE users.id = bookings.user_fk) AS owner_last_name FROM bookings 
+$stmtone = $db->prepare( 'SELECT bookings.id AS booking_id, bookings.user_fk, bookings.dog_sitter_fk, bookings.dog_fk, bookings.time_interval, bookings.message, bookings.booking_date, bookings.is_confirmed, dogs.name AS dog_name, dogs.image_url AS dog_photo, dogs.id, breeds.name AS breed_name, (SELECT users.first_name FROM users WHERE users.id = bookings.user_fk) AS owner_first_name, (SELECT users.last_name FROM users WHERE users.id = bookings.user_fk) AS owner_last_name FROM bookings 
 INNER JOIN users ON users.id = bookings.dog_sitter_fk 
 INNER JOIN dogs ON dogs.id = bookings.dog_fk 
 INNER JOIN breeds ON breeds.id = dogs.breed_fk 
@@ -28,7 +28,7 @@ foreach( $aRows as $aRow ){
     }
     $sDateNormalized =  date("d/m/Y", substr($aRow->booking_date, 0, 10));
     // $sOneResult = "<tr><td>".$sDateNormalized."</td><td>".$sTimeIntervalString."</td><td>".$aRow->message."</td><td>".$aRow->dog_name.", ".$aRow->breed_name."</td></tr>";
-    $sOneResult = "<div class='request-card'><div class='request-info'><img src='".$aRow->dog_photo."' alt=''><div class='request-text'><h5>Dog walking for ".$aRow->dog_name.", ".$aRow->breed_name."</h5><span class='request-date'>".$sDateNormalized."</span><span class='request-time'>".$sTimeIntervalString."</span><div class='request-message'>“".$aRow->message."”</div><span class='request-owner'>- ".$aRow->owner_first_name." ".$aRow->owner_last_name."</span></div></div><div class='accept-decline-buttons'><button data-bookingid='".$aRow->booking_id."' class='yellow-btn accept-btn'>Accept request</button><button data-bookingid='".$aRow->booking_id."' data-bookingdate='".$aRow->booking_date."' data-dogsitterfk='".$aRow->dog_sitter_fk."' class='red-btn decline-btn'>Decline request</button></div></div>";
+    $sOneResult = "<div class='request-card'><div class='request-info'><a href='view-dog?id=$aRow->id'><img src='".$aRow->dog_photo."' alt=''></a><div class='request-text'><h5>Dog walking for ".$aRow->dog_name.", ".$aRow->breed_name."</h5><span class='request-date'>".$sDateNormalized."</span><span class='request-time'>".$sTimeIntervalString."</span><div class='request-message'>“".$aRow->message."”</div><span class='request-owner'>- ".$aRow->owner_first_name." ".$aRow->owner_last_name."</span></div></div><div class='accept-decline-buttons'><button data-bookingid='".$aRow->booking_id."' class='yellow-btn accept-btn'>Accept request</button><button data-bookingid='".$aRow->booking_id."' data-bookingdate='".$aRow->booking_date."' data-dogsitterfk='".$aRow->dog_sitter_fk."' class='red-btn decline-btn'>Decline request</button></div></div>";
     $aAllResults[] = $sOneResult;
 }
 
