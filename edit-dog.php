@@ -37,7 +37,7 @@
                     <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()" class="custom-file-input custom-file-input-one-file">
                 </div>
                 <label for="iDogWeight">Dog Weight</label>
-                <input type="number" name="txtiDogWeight"><br>
+                <input type="number" name="txtiDogWeight" id="txtiDogWeight"><br>
 
                 <label for="rbDogSpayedNeutered">Spayed/Neutered</label>
                 <div class="dog-gender">
@@ -82,6 +82,7 @@
 </div>
 
 <?php 
-    $sLinktoScript = '<script src="js/get-dog-info.js"></script>';
+    $sLinktoScript = '<script src="js/get-dog-info.js"></script><script src="js/edit-dog-info.js"></script>';
+    
     require_once 'bottom.php'; 
 ?>

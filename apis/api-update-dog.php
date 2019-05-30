@@ -3,12 +3,12 @@
   require_once '../connect.php';
 
   session_start();
-  $sUserEmail = $_POST['sEmail'];
+  $dogId = $_POST['id'];
 
-  $sUserEmail = $_POST['sUserEmail'] ?? '';
+
   $iDogWeight = $_POST['txtiDogWeight'] ?? '';
   // TODO: CHANGE value of IMAGE VARIABLE
-  $sImageUrl = $_POST['txtiDogWeight'] ?? '';
+  // $sImageUrl = $_FILES['fileToUpload'];
   $bDogSpayedNeutered = $_POST['rbDogSpayedNeutered'] ?? '';
   $bDogMicrochipped = $_POST['rbDogMicrochipped'] ?? '';
   $bDogFriendlyWithOtherDogs = $_POST['rbDogFriendlyWithOtherDogs'] ?? '';
@@ -17,25 +17,25 @@
   $sDogAbout = $_POST['txtsDogAbout'] ?? '';
   $sDogCareInstructions = $_POST['txtsDogCareInstructions'] ?? '';
 
+  // image_url=:sImageUrl,
 
-
-
-  $stmt = $db->prepare("UPDATE dogs SET weight=:iDogWeight, image_url=:sImageUrl,  spayed_neutered=:bDogSpayedNeutered,  microchipped=:bDogMicrochipped,  
+  $stmt = $db->prepare("UPDATE dogs SET weight=:iDogWeight, spayed_neutered=:bDogSpayedNeutered,  microchipped=:bDogMicrochipped,  
                           friendly=:bDogFriendlyWithOtherDogs,  special_requirements=:sDogSpecialRequirements, vet_contact=:sDogVetContact, about=:sDogAbout, 
-                          care_instructions=:sDogCareInstructions WHERE user_fk = (SELECT id FROM users WHERE email=:sEmail) ");
+                          care_instructions=:sDogCareInstructions WHERE id=:dogId");
   // care_instructions=:sDogCareInstructions WHERE user_fk = (CALL get_user_id('i@i.com')) ");
   
+  $stmt->bindValue(':dogId', $dogId);
+
+  // $stmt->bindValue(':sImageUrl', $sImageUrl);
   $stmt->bindValue(':iDogWeight', $iDogWeight);
-  $stmt->bindValue(':sImageUrl', $sImageUrl);
   $stmt->bindValue(':bDogSpayedNeutered', $bDogSpayedNeutered);
   $stmt->bindValue(':bDogMicrochipped', $bDogMicrochipped);
-  $stmt->bindValue(':sDogCareInstructions', $sDogCareInstructions);
   $stmt->bindValue(':bDogFriendlyWithOtherDogs', $bDogFriendlyWithOtherDogs);
   $stmt->bindValue(':sDogSpecialRequirements', $sDogSpecialRequirements);
+  $stmt->bindValue(':sDogCareInstructions', $sDogCareInstructions);
   $stmt->bindValue(':sDogVetContact', $sDogVetContact);
   $stmt->bindValue(':sDogAbout', $sDogAbout);
   
-  $stmt->bindValue(':sEmail', $sUserEmail);
   
   $stmt->execute();
   sendResponse(1, __LINE__, 'dog updated');
