@@ -33,48 +33,46 @@
                     <div class="about-photo">
                         <img id="dog-image-preview" alt="">
                     </div>
-                    <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()" class="custom-file-input custom-file-input-one-file">
+                    <!-- <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewImage()" class="custom-file-input custom-file-input-one-file"> -->
                 </div>
 
 
 
                 <label for="iDogWeight">Dog weight (kg)</label>
-                <input type="number" name="txtiDogWeight"><br>
+                <p id="txtiDogWeight"></p><br>
 
                 <label for="rbDogSpayedNeutered">Spayed/Neutered</label>
                 <div class="dog-gender">
-                    <input type="radio" name="rbDogSpayedNeutered" value="yes" class="radio" /> <span>Yes</span>
-                    <input type="radio" name="rbDogSpayedNeutered" value="no"  class="radio" /> No <br>
+                    <input type="radio" name="rbDogSpayedNeutered" value="yes" class="radio" disabled/> <span>Yes</span>
+                    <input type="radio" name="rbDogSpayedNeutered" value="no"  class="radio" disabled/> No <br>
                 </div>
                 
                 <label for="rbDogMicrochipped">Microchipped</label>
                 <div class="dog-gender">
-                    <input type="radio" name="rbDogMicrochipped" value="yes" class="radio" /> <span>Yes</span>
-                    <input type="radio" name="rbDogMicrochipped" value="no"  class="radio" /> No <br>
+                    <input type="radio" name="rbDogMicrochipped" value="yes" class="radio" disabled/> <span>Yes</span>
+                    <input type="radio" name="rbDogMicrochipped" value="no"  class="radio" disabled/> No <br>
                 </div>
                 
                 <label for="rbDogFriendlyWithOtherDogs">Friendly With Other Dogs</label>
                 <div class="dog-gender">
-                    <input type="radio" name="rbDogFriendlyWithOtherDogs" value="yes" class="radio" /> <span>Yes</span>
-                    <input type="radio" name="rbDogFriendlyWithOtherDogs" value="no"  class="radio" /> No <br>
+                    <input type="radio" name="rbDogFriendlyWithOtherDogs" value="yes" class="radio" disabled/> <span>Yes</span>
+                    <input type="radio" name="rbDogFriendlyWithOtherDogs" value="no"  class="radio" disabled/> No <br>
                 </div>
 
                 <label for="txtsDogSpecialRequirements">Special requirements</label>
-                <input type="text" name="txtsDogSpecialRequirements" id="txtsDogSpecialRequirements"><br>
+                <p id="txtsDogSpecialRequirements"></p><br>
                 
                 <label for="txtsDogVetContact">Vet contact</label>
-                <input type="text" name="txtsDogVetContact" id="txtsDogVetContact"><br>
+                <p id="txtsDogVetContact"></p><br>
                 
-                <label for="txtsDogAbout">About my dog</label>
-                <input type="text" name="txtsDogAbout" id="txtsDogAbout"><br>
+                <label for="txtsDogAbout">About dog</label>
+                <p id="txtsDogAbout"></p><br>
 
                 <label for="txtsDogCareInstructions">Dog care instructions</label>
-                <input type="text" name="txtsDogCareInstructions" id="txtsDogCareInstructions"><br>
+                <p id="txtsDogCareInstructions"></p><br>
 
               </div>
           </div>
-
-          <input type="submit" class="yellow-btn">
       </div>
 
     </form>
@@ -84,6 +82,6 @@
 </div>
 
 <?php 
-    $sLinktoScript = '<script src="js/show-dog-info.js"></script>';
+    $sLinktoScript = '<script src="js/get-dog-info.js"></script>';
     require_once 'bottom.php'; 
 ?>

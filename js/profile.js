@@ -126,7 +126,7 @@ $.ajax({
         console.log("cannot display doggo")
     }
 }).fail(function(){
-    console.log('API get dogs does not work')
+    console.log('API-get-dog-profile-page does not work')
 });
 })
 
