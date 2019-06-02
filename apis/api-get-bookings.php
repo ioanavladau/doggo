@@ -13,7 +13,7 @@ if($sBookingType=='upcoming'){
     INNER JOIN users ON users.id = bookings.dog_sitter_fk 
     INNER JOIN dogs ON dogs.id = bookings.dog_fk 
     INNER JOIN dog_sitters ON bookings.dog_sitter_fk = dog_sitters.user_fk
-    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = 1 AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) >= UNIX_TIMESTAMP() ORDER BY bookings.booking_date DESC' );
+    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND bookings.is_confirmed = 1 AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) >= UNIX_TIMESTAMP() AND bookings.dog_sitter_fk NOT IN (SELECT id FROM users WHERE email=:sUserEmail) ORDER BY bookings.booking_date DESC' );
     $stmtone->bindValue(':sUserEmail', $sUserEmail);
     $stmtone->execute();
     $aRows = $stmtone->fetchAll();
@@ -44,7 +44,7 @@ if($sBookingType=='upcoming'){
     INNER JOIN users ON users.id = bookings.dog_sitter_fk 
     INNER JOIN dogs ON dogs.id = bookings.dog_fk 
     INNER JOIN dog_sitters ON bookings.dog_sitter_fk = dog_sitters.user_fk
-    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) >= UNIX_TIMESTAMP() AND bookings.is_confirmed = 0 OR bookings.is_confirmed = -1 ORDER BY bookings.booking_date DESC' );
+    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) >= UNIX_TIMESTAMP() AND bookings.is_confirmed = 0 OR bookings.is_confirmed = -1 AND bookings.dog_sitter_fk NOT IN (SELECT id FROM users WHERE email=:sUserEmail) ORDER BY bookings.booking_date DESC' );
     $stmtone->bindValue(':sUserEmail', $sUserEmail);
     $stmtone->execute();
     $aRows = $stmtone->fetchAll();
@@ -88,7 +88,7 @@ if($sBookingType=='upcoming'){
     INNER JOIN users ON users.id = bookings.dog_sitter_fk 
     INNER JOIN dogs ON dogs.id = bookings.dog_fk 
     INNER JOIN dog_sitters ON bookings.dog_sitter_fk = dog_sitters.user_fk
-    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) <= UNIX_TIMESTAMP() ORDER BY bookings.booking_date DESC' );
+    WHERE bookings.user_fk IN (SELECT users.id from users WHERE users.email = :sUserEmail) AND CONVERT(SUBSTRING(CONVERT(booking_date, CHAR),1,10), INT) <= UNIX_TIMESTAMP() AND bookings.dog_sitter_fk NOT IN (SELECT id FROM users WHERE email=:sUserEmail) ORDER BY bookings.booking_date DESC' );
     $stmtone->bindValue(':sUserEmail', $sUserEmail);
     $stmtone->execute();
     $aRows = $stmtone->fetchAll();

@@ -99,7 +99,7 @@
             <div class="dog-sitter-photos-container <?= $sHideClass ?>">
                 <?php
                     foreach( $aRowsThree as $aRow ){
-                        echo "<div><img class='main-photo' src='images/dog-photo/$aRow->url' alt=''></div>";
+                        echo "<div><img class='main-photo' src='images/dog-sitter-photos/$aRow->url' alt=''></div>";
                     }
                 ?>
             </div>

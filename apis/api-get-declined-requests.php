@@ -28,7 +28,7 @@ foreach( $aRows as $aRow ){
     }
     $sDateNormalized =  date("d/m/Y", substr($aRow->booking_date, 0, 10));
     // $sOneResult = "<tr><td>".$sDateNormalized."</td><td>".$sTimeIntervalString."</td><td>".$aRow->message."</td><td>".$aRow->dog_name.", ".$aRow->breed_name."</td></tr>";
-    $sOneResult = "<div class='request-card'><div class='request-info declined-request'><a href='view-dog?id=$aRow->id'><img src='".$aRow->dog_photo."' alt=''></a><div class='request-text'><h5>Dog walking for ".$aRow->dog_name.", ".$aRow->breed_name."</h5><span class='request-date'>".$sDateNormalized."</span><span class='request-time'>".$sTimeIntervalString."</span><div class='request-message'>“".$aRow->message."”</div><span class='request-owner'>- ".$aRow->owner_first_name." ".$aRow->owner_last_name."</span></div></div></div>";
+    $sOneResult = "<div class='request-card'><div class='request-info declined-request'><a href='view-dog?id=$aRow->id'><img src='doggo/".$aRow->dog_photo."' alt=''></a><div class='request-text'><h5>Dog walking for ".$aRow->dog_name.", ".$aRow->breed_name."</h5><span class='request-date'>".$sDateNormalized."</span><span class='request-time'>".$sTimeIntervalString."</span><div class='request-message'>“".$aRow->message."”</div><span class='request-owner'>- ".$aRow->owner_first_name." ".$aRow->owner_last_name."</span></div></div></div>";
     $aAllResults[] = $sOneResult;
 }
 

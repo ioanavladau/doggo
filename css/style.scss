@@ -833,7 +833,7 @@ h6{
 .dog-sitter-photos-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 200px 200px;
+    grid-template-rows: 170px 1fr;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     margin: 30px 0 0 30px;
@@ -1111,4 +1111,52 @@ svg{
         margin: 0;
     }
     // background-image: url('../images/dog.svg');
+}
+.view-dog{
+    width: 30vw;
+    .dog-profile{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-photo{
+        img{
+            height: 150px;
+            width: 150px;
+        }
+    }
+    h5{
+        display: inline;
+        margin-bottom: 10px;
+    }
+    .right-column{
+        display: flex;
+    }
+    h1{
+        margin-bottom: 5px;
+    }
+}
+.green-color{
+    color: #6b8e00;
+}
+.red-color{
+    color: #aa0707;
+}
+.description-left, .description-right{
+    p{
+        margin-top: 5px;
+    }
+}
+.right-column-two{
+    display: flex;
+}
+.description-right{
+    margin-left: 30px;
+}
+.extra-info{
+    margin-top: 10px;
+    h6{
+        margin-bottom: 2px;
+    }
 }

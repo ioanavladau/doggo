@@ -27,16 +27,6 @@
             <?php
                     require_once __DIR__.'/connect.php';
                     
-                    $stmt = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
-                    $stmt->bindValue(':sUserEmail', $sUserEmail);
-                    $stmt->execute();
-
-                    $aRows = $stmt->fetchAll();
-                    
-                    if ($aRows == []){
-                        $BecomeADogSitterLink = '<a href="become-a-dogsitter"><img src="images/dog.svg" class="small-icon">Become a dog sitter</a>';
-                    }
-
                     $stmttwo = $db->prepare("SELECT users.id, dogs.name from users INNER JOIN dogs ON users.id = dogs.user_fk WHERE users.email =:sUserEmail"); 
                     $stmttwo->bindValue(':sUserEmail', $sUserEmail);
                     $stmttwo->execute();
@@ -45,12 +35,24 @@
                     
                     if ($aRowsTwo == []){
                         $SearchForADogSitterLink = '';
-                        $BookingsLink = '';
+                        // $BookingsLink = '';
                         
                     }else{
                         $SearchForADogSitterLink = '<a href="search"><img src="images/search.svg" class="small-icon">Search for dog sitters</a>';
                         $BookingsLink = "<a href='bookings'>Bookings</a>";
                         
+                    }
+
+                    $stmt = $db->prepare("SELECT * FROM users WHERE email = :sUserEmail AND is_dog_sitter = 1"); 
+                    $stmt->bindValue(':sUserEmail', $sUserEmail);
+                    $stmt->execute();
+
+                    $aRows = $stmt->fetchAll();
+                    
+                    if ($aRows == []){
+                        $BecomeADogSitterLink = '<a href="become-a-dogsitter"><img src="images/dog.svg" class="small-icon">Become a dog sitter</a>';
+                    }else{
+                        $BookingsLink = "<a href='bookings'>Bookings</a>";
                     }
                     
                     
@@ -63,7 +65,7 @@
         <div class="right-nav">
             <a href="<?php echo $sProfileLink ?? 'profile'; ?>">Profile</a>
             <a href="<?php echo $sSettingsLink ?? 'settings'; ?>">Settings</a>
-            <?= $BookingsLink ?? 'bookings'; ?>
+            <?= $BookingsLink ?? ''; ?>
             <a href="logout">Logout</a>
         </div>
     </nav>
