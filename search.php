@@ -19,7 +19,7 @@
     <div class="search-results">
         <div class="search-bar white-card">
             <form>
-                <input type="text" name="searchdate" id="availability" value="05/01/2019" />
+                <input type="text" name="searchdate" id="availability" value="06/01/2019" />
                 <div class="available-times">
                     <div class="available-time first-time-span" id="morning">6:00-11:00</div>
                     <div class="available-time second-time-span" id="noon">11:00-15:00</div>

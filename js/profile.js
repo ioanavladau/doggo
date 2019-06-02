@@ -78,6 +78,10 @@ $('#add-availability').click(function(){
         }
     }).fail(function(){
         console.log('API does not work')
+        swal({
+            title: 'Error. Please try again later',
+            icon: 'warning',
+        })
     });
 
     return false

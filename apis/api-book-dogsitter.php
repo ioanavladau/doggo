@@ -13,6 +13,7 @@ $sDate = $_GET['sDate'] ?? '';
 
 
 $stmt = $db->prepare( 'SELECT id, first_name, last_name, email, profile_photo_url, address FROM users WHERE email=:sUserEmail' );
+// $stmt = $db->prepare( 'CALL getUserByEmail(?)' );
 $stmt->bindValue(':sUserEmail', $sUserEmail);
 $stmt->execute();
 $aRows = $stmt->fetchAll();
@@ -21,6 +22,7 @@ foreach( $aRows as $aRow ){
     $sUserId = $aRow->id;
     
 }
+
 
 //sDate - find a record with this date
 
@@ -118,7 +120,8 @@ $aDatesFromId = array_flip($aDatesFromId);
 //make new records in the booking database for available dates
 foreach($aDatesFromId as $aDate){
 
-    $aDate = $aDate.' 12:00:00';
+    // $aDate = $aDate.' 12:00:00';
+    $aDate = $aDate;
     $iUnixDate = strtotime($aDate);
     $iUnixDate = $iUnixDate*1000;
     $stmtfour = $db->prepare( 'INSERT INTO dog_sitters_availability VALUES(null, :sBookedRecordUserFk, :iUnixDate, :iUnixDate, :sBookedRecordTimeInterval, 1)' );
@@ -130,7 +133,8 @@ foreach($aDatesFromId as $aDate){
 };
 //make a new record for the booked date with is_available = 0
 
-$sBookedDateFormatted = $formattedDateForSearch.' 12:00:00';
+// $sBookedDateFormatted = $formattedDateForSearch.' 12:00:00';
+$sBookedDateFormatted = $formattedDateForSearch;
 $iUnixBookedDate = strtotime($sBookedDateFormatted);
 $iUnixBookedDate = $iUnixBookedDate*1000;
 $stmtfive = $db->prepare( 'INSERT INTO dog_sitters_availability VALUES(null, :sBookedRecordUserFk, :iUnixBookedDate, :iUnixBookedDate, :sBookedRecordTimeInterval, 0)' );

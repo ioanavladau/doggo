@@ -33,17 +33,17 @@
         <input type="number" name="txtiDogMonths" id="txtiDogMonths"><br> -->
       <form id="frmAddDog" method="post" enctype="multipart/form-data">
         <label for="txtsDogName">Name*</label>
-        <input type="text" name="txtsDogName" id="txtsDogName" value="placeholder value"><br>
+        <input type="text" name="txtsDogName" id="txtsDogName"><br>
 
         <label for="txtiDogWeight">Weight* (kg)</label>
-        <input type="number" name="txtiDogWeight" id="txtiDogWeight" value="11"><br>
+        <input type="number" name="txtiDogWeight" id="txtiDogWeight"><br>
         <!-- <label for="txtsDogBreed">Breed<br> Write all breeds that apply. If your dog is a mixed breed, add 'mixed' in your description.</label>
         <input type="text" name="txtsDogBreed" id="txtBreed"><br> -->
         <label for="txtiDogYears">Age* (years)</label>
-        <input type="number" name="txtiDogYears" id="txtiDogYears" value="11"><br>
+        <input type="number" name="txtiDogYears" id="txtiDogYears"><br>
         
         <label for="txtiDogMonths">Age* (months)</label>
-        <input type="number" name="txtiDogMonths" id="txtiDogMonths" value="11"><br>
+        <input type="number" name="txtiDogMonths" id="txtiDogMonths"><br>
 
         <label for="rbDogGender">Gender*</label>
         <div class="dog-gender">

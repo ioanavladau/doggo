@@ -35,30 +35,45 @@ window.onload = function(){
          $(".about-text #dog-name").text(jData.message.sDogName);
          $(".about-text #dog-breed").text(jData.message.sDogBreed);
          $("#dog-image-preview").attr('src', jData.message.sDogImageUrl);
+         
+        //  if($("#txtiDogWeight").is("input")){
+        //    $("#txtiDogWeight").val(jData.message.iDogWeight);
+        //   } else {
+        //     $("#txtiDogWeight").text(jData.message.iDogWeight);
+        //   }
+          
+          $("#dog-weight").text(" / "+jData.message.iDogWeight+" kg");
 
-        if($("#txtiDogWeight").is("input")){
-          $("#txtiDogWeight").val(jData.message.iDogWeight);
-        } else {
-          $("#txtiDogWeight").text(jData.message.iDogWeight);
-        }
 
 
          if(jData.message.bDogSpayedNeutered == 1){
-          $("input[name='rbDogSpayedNeutered']:first").prop('checked', true);
+          // $("input[name='rbDogSpayedNeutered']:first").prop('checked', true);
+          $('#spayed').text('Spayed/neutured')
+          $('#spayed').addClass('green-color')
          } else {
-          $("input[name='rbDogSpayedNeutered']:last").prop('checked', true);
-         }
-
-         if(jData.message.bDogMicrochipped == 1){
-          $("input[name='rbDogMicrochipped']:first").prop('checked', true);
-         } else {
-          $("input[name='rbDogMicrochipped']:last").prop('checked', true);
+          // $("input[name='rbDogSpayedNeutered']:last").prop('checked', true);
+          $('#spayed').text('Not spayed/neutured')
+          $('#spayed').addClass('red-color')
+        }
+        
+        if(jData.message.bDogMicrochipped == 1){
+          $('#microchipped').text('Microchipped')
+          $('#microchipped').addClass('green-color')
+          // $("input[name='rbDogMicrochipped']:first").prop('checked', true);
+        } else {
+          $('#microchipped').text('Not microchipped')
+          $('#microchipped').addClass('red-color')
+          // $("input[name='rbDogMicrochipped']:last").prop('checked', true);
          }
 
          if(jData.message.bDogFriendly == 1){
-          $("input[name='rbDogFriendlyWithOtherDogs']:first").prop('checked', true);
+          $('#friendly').text('Friendly with other dogs')
+          $('#friendly').addClass('green-color')
+          // $("input[name='rbDogFriendlyWithOtherDogs']:first").prop('checked', true);
          } else {
-          $("input[name='rbDogFriendlyWithOtherDogs']:last").prop('checked', true);
+          $('#friendly').text('Not Friendly with other dogs')
+          $('#friendly').addClass('red-color')
+          // $("input[name='rbDogFriendlyWithOtherDogs']:last").prop('checked', true);
          }
 
          

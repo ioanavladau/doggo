@@ -18,8 +18,9 @@ $('#frmSignup').submit( function(){
                       value: "backToLogin",
                     },
                   },
-            });
-            $('#frmSignup')[0].reset()
+            }).then(function() {
+                location.href = 'login';
+              }) 
         }else{
             swal({
                 title: "Can't sign you up!",
